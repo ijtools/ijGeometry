@@ -461,9 +461,9 @@ public class Ellipse2D implements Contour2D
      * @see net.ijt.geom.geom2d.Geometry2D#boundingBox()
      */
     @Override
-    public Bounds2D boundingBox()
+    public Bounds2D bounds()
     {
         // TODO could be more precise
-        return asPolyline(200).boundingBox();
+        return asPolyline(200).bounds();
     }
 }

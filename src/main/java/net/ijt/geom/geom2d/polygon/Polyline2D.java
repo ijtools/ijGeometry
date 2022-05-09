@@ -245,7 +245,7 @@ public interface Polyline2D extends Curve2D
         return true;
     }
 
-    public default Bounds2D boundingBox()
+    public default Bounds2D bounds()
     {
         // initialize with extreme values
         double xmin = Double.POSITIVE_INFINITY;

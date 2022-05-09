@@ -381,10 +381,10 @@ public class DefaultPolygon2D implements Polygon2D
     /**
      * Returns the bounding box of this polygon.
      * 
-     * @see net.ijt.geom.geom2d.Geometry2D#boundingBox()
+     * @see net.ijt.geom.geom2d.Geometry2D#bounds()
      */
     @Override
-    public Bounds2D boundingBox()
+    public Bounds2D bounds()
     {
         // initialize with extreme values
         double xmin = Double.POSITIVE_INFINITY;

@@ -14,7 +14,7 @@ import net.ijt.geom.geom2d.polygon.Polygon2D;
  * @author dlegland
  *
  */
-public class Bounds2D implements Bounds, Geometry2D
+public class Bounds2D implements Bounds
 {
     // ===================================================================
     // class variables
@@ -232,22 +232,8 @@ public class Bounds2D implements Bounds, Geometry2D
     }
 
     @Override
-    public boolean contains(Point2D point, double eps)
+    public int dimensionality()
     {
-        if (point.x < xmin || point.x > xmax) return false;
-        if (point.y < ymin || point.y > ymax) return false;
-        return true;
-    }
-
-    @Override
-    public double distance(double x, double y)
-    {
-        return getRectangle().distance(x, y);
-    }
-
-    @Override
-    public Bounds2D boundingBox()
-    {
-        return this;
+        return 2;
     }
 }

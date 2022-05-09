@@ -97,7 +97,7 @@ public class CurveSet2D implements CurveShape2D
     }
 
     @Override
-    public Bounds2D boundingBox()
+    public Bounds2D bounds()
     {
         // initialize extreme values
         double xmin = Double.POSITIVE_INFINITY;
@@ -107,7 +107,7 @@ public class CurveSet2D implements CurveShape2D
         
         for (Curve2D curve : curves)
         {
-            Bounds2D box = curve.boundingBox();
+            Bounds2D box = curve.bounds();
             xmin = Math.min(xmin, box.getXMin());
             xmax = Math.max(xmax, box.getXMax());
             ymin = Math.min(ymin, box.getYMin());

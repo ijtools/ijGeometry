@@ -263,7 +263,7 @@ public class SimpleGraph2D implements Graph2D
 
 
     @Override
-    public Bounds2D boundingBox()
+    public Bounds2D bounds()
     {
         // initialize with extreme values
         double xmin = Double.POSITIVE_INFINITY;

@@ -22,4 +22,11 @@ public interface Bounds
      * @return Returns the highest coordinate of the geometry in the given dimension.
      */
     double getMax(int d);
+    
+    /**
+     * Returns the dimensionality of the bounds.
+     * 
+     * @return the number of dimensions of this entity.
+     */
+   public int dimensionality();
 }

@@ -19,9 +19,9 @@ public interface Geometry
     public boolean isBounded();
     
     /**
-     * @return the bounding box of this geometry
+     * @return the bounds of this geometry
      */
-    public Bounds boundingBox();
+    public Bounds bounds();
     
     /**
      * Returns the number of dimensions this entity is living in. For arrays,

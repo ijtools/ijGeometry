@@ -67,6 +67,11 @@ public interface Geometry2D extends Geometry
     public double distance(double x, double y);
     
     /**
+     * @return the bounds of this geometry.
+     */
+    public Bounds2D bounds();
+
+    /**
      * @return a dimensionality value equals to 2.
      */
     @Override
@@ -74,9 +79,4 @@ public interface Geometry2D extends Geometry
     {
         return 2;
     }
-
-    /**
-     * @return the bounds of this geometry.
-     */
-    public Bounds2D boundingBox();
 }

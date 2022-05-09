@@ -78,9 +78,9 @@ public class GenericDomain2D implements Domain2D
 	}
 
 	@Override
-	public Bounds2D boundingBox()
+	public Bounds2D bounds()
 	{
 		// TODO should also manage unbounded domains
-		return boundary.boundingBox();
+		return boundary.bounds();
 	}
 }

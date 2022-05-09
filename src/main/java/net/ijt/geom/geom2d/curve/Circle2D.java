@@ -228,7 +228,7 @@ public class Circle2D implements Contour2D
      * @see net.ijt.geom.geom2d.Geometry2D#boundingBox()
      */
     @Override
-    public Bounds2D boundingBox()
+    public Bounds2D bounds()
     {
         return new Bounds2D(xc - radius, xc + radius, yc - radius, yc + radius);
     }

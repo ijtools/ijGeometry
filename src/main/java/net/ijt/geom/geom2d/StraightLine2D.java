@@ -287,7 +287,7 @@ public class StraightLine2D implements LinearGeometry2D, Contour2D
      * @see net.ijt.geom.Geometry#boundingBox()
      */
     @Override
-    public Bounds2D boundingBox()
+    public Bounds2D bounds()
     {
         throw new UnboundedGeometryException(this);
     }

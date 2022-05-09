@@ -110,7 +110,7 @@ public interface Polyline3D extends Curve3D
         return true;
     }
 
-    public default Bounds3D boundingBox()
+    public default Bounds3D bounds()
     {
         // initialize with extreme values
         double xmin = Double.POSITIVE_INFINITY;

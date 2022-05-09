@@ -205,7 +205,7 @@ public class Point3D implements Point, Geometry3D
     }
 
     @Override
-    public Bounds3D boundingBox()
+    public Bounds3D bounds()
     {
         return new Bounds3D(this.x, this.x, this.y, this.y, this.z, this.z);
     }

@@ -212,7 +212,7 @@ public class Sphere3D implements Geometry3D
      * @see net.ijt.geom.geom3d.Geometry3D#boundingBox()
      */
     @Override
-    public Bounds3D boundingBox()
+    public Bounds3D bounds()
     {
         double x = center.getX();
         double y = center.getY();

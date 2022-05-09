@@ -504,7 +504,7 @@ public class SimpleTriMesh3D implements Mesh3D
      * @see net.ijt.geom.geom3d.Geometry3D#boundingBox()
      */
     @Override
-    public Bounds3D boundingBox()
+    public Bounds3D bounds()
     {
         // initialize to extreme values
         double xmin = Double.POSITIVE_INFINITY;

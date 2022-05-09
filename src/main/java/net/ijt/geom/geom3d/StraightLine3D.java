@@ -193,7 +193,7 @@ public class StraightLine3D implements LinearGeometry3D
      * @see net.ijt.geom.geom3d.Geometry3D#boundingBox()
      */
     @Override
-    public Bounds3D boundingBox()
+    public Bounds3D bounds()
     {
         throw new UnboundedGeometryException(this);
     }

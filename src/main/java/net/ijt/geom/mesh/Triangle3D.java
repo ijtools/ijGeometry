@@ -309,7 +309,7 @@ public class Triangle3D implements Polygon3D
     }
 
     @Override
-    public Bounds3D boundingBox()
+    public Bounds3D bounds()
     {
         double xmin = Math.min(Math.min(p1.getX(), p2.getX()), p3.getX());
         double xmax = Math.max(Math.max(p1.getX(), p2.getX()), p3.getX());

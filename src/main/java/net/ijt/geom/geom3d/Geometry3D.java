@@ -64,6 +64,8 @@ public interface Geometry3D extends Geometry
      */
     public double distance(double x, double y, double z);
     
+    public Bounds3D bounds();
+
     /**
      * Returns dimensionality equals to 3.
      */
@@ -72,6 +74,4 @@ public interface Geometry3D extends Geometry
     {
         return 3;
     }
-    
-    public Bounds3D boundingBox();
 }

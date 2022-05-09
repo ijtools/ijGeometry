@@ -225,4 +225,10 @@ public class Bounds3D implements Bounds
             return false;
         return true;
     }
+
+    @Override
+    public int dimensionality()
+    {
+        return 3;
+    }
 }

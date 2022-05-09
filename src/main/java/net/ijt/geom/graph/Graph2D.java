@@ -91,7 +91,7 @@ public interface Graph2D extends Geometry2D
 
 
     @Override
-    public default Bounds2D boundingBox()
+    public default Bounds2D bounds()
     {
         // initialize with extreme values
         double xmin = Double.POSITIVE_INFINITY;
