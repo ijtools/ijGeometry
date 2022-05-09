@@ -6,9 +6,9 @@ package net.ijt.geom.graph;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import net.ijt.geom.geom2d.Bounds2D;
-import net.ijt.geom.geom2d.LineSegment2D;
-import net.ijt.geom.geom2d.Point2D;
+import net.ijt.geom2d.Bounds2D;
+import net.ijt.geom2d.LineSegment2D;
+import net.ijt.geom2d.Point2D;
 
 /**
  * @author dlegland
