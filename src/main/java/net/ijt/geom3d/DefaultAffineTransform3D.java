@@ -3,6 +3,8 @@
  */
 package net.ijt.geom3d;
 
+import java.util.Locale;
+
 /**
  * Concrete implementation of a 3D affine transform, that stores the twelve
  * coefficients.
@@ -190,4 +192,13 @@ public class DefaultAffineTransform3D implements AffineTransform3D
                 { this.m20, this.m21, this.m22, this.m23 },
                 { 0, 0, 0, 1 } };
     }
+    
+    
+    @Override
+    public String toString()
+    {
+        String pattern = "DefaultAffineTransform3D(%5.3f, %5.3f, %5.3f, %7.2f,  %5.3f, %5.3f, %5.3f, %7.2f,  %5.3f, %5.3f, %5.3f, %7.2f,  0, 0, 0, 1)";
+        return String.format(Locale.ENGLISH, pattern, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23);
+    }
+
 }
