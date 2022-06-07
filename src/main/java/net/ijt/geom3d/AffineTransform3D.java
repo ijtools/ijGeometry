@@ -12,20 +12,32 @@ public interface AffineTransform3D extends Transform3D
 	// ===================================================================
 	// static methods
 
-	/**
-	 * Creates a translation by the given vector.
-	 * 
-	 * @param vect
-	 *            the vector of the translation transform
-	 * @return a new instance of AffineTransform3D representing a translation
-	 */
-	public static AffineTransform3D createTranslation(Vector3D vect)
-	{
-		return new DefaultAffineTransform3D(1, 0, 0, vect.getX(), 0, 1, 0, vect.getY(), 0, 0, 1, vect.getZ());
-	}
+    /**
+     * Creates a translation by the given vector.
+     * 
+     * @param vect
+     *            the vector of the translation transform
+     * @return a new instance of AffineTransform3D representing a translation
+     */
+    public static AffineTransform3D createTranslation(Vector3D vect)
+    {
+        return createTranslation(vect.getX(), vect.getY(), vect.getZ());
+    }
+
+    /**
+     * Creates the translation that moves the origin onto the specified point.
+     * 
+     * @param pos
+     *            the point that will specify the transformation.
+     * @return a new instance of AffineTransform3D representing a translation
+     */
+    public static AffineTransform3D createTranslation(Point3D pos)
+    {
+        return createTranslation(pos.getX(), pos.getY(), pos.getZ());
+    }
 
 	/**
-	 * Creates a translation by the given vector.
+	 * Creates a translation by the given vector specified with its components.
 	 * 
 	 * @param dx
 	 *            the x-component of the translation transform
