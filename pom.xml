@@ -21,6 +21,11 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <name>plugins/ij_Geometry.jar</name>
     <description>Geometry library for ImageJ</description>
 
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    
     <dependencies>
         <!-- When writing ImageJ/Fiji plugins, it is necessary to add a dependency 
              to ImageJ jar -->
