@@ -273,12 +273,12 @@ public class Ellipse2D implements Contour2D
     }
 
     /**
-     * Computes the area of this ellipse, by multiplying the semi axis lengths
-     * by PI.
-     * 
-     * @return the area of this ellipse.
-     * @see net.ijt.geom2d.curve.Circle2D#area()
-     */
+	 * Computes the area of this ellipse, by multiplying the product of semi axis
+	 * lengths by PI.
+	 * 
+	 * @return the area of this ellipse.
+	 * @see net.ijt.geom2d.curve.Circle2D#area()
+	 */
     public double area()
     {
         return this.r1 * this.r2 * Math.PI;
@@ -348,7 +348,7 @@ public class Ellipse2D implements Contour2D
     @Override
     public Point2D getPoint(double t)
     {
-        // pre-copute rotation coefficients
+        // pre-compute rotation coefficients
         double thetaRad = Math.toRadians(this.theta);
         double cot = Math.cos(thetaRad);
         double sit = Math.sin(thetaRad);

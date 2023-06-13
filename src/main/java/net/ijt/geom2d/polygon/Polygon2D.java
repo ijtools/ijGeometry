@@ -135,7 +135,7 @@ public interface Polygon2D extends PolygonalDomain2D
     @Override
     public default Polygon2D transform(AffineTransform2D trans)
     {
-        ArrayList<Point2D> newVertices = new ArrayList<>(this.vertexNumber());
+        ArrayList<Point2D> newVertices = new ArrayList<>(this.vertexCount());
         for (Point2D point : this.vertexPositions())
         {
             newVertices.add(point.transform(trans));

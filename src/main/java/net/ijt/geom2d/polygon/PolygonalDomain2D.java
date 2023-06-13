@@ -25,6 +25,14 @@ public interface PolygonalDomain2D extends Domain2D
      */
     public Iterable<LinearRing2D> rings();
     
+    /**
+     * Applies an affine transform to this polygonal domain, and return the
+     * result of transformation.
+     * 
+     * @param trans
+     *            the transformation to apply
+     * @return the transformed polygon
+     */
     public PolygonalDomain2D transform(AffineTransform2D trans);
     
     /**
@@ -57,5 +65,5 @@ public interface PolygonalDomain2D extends Domain2D
     /**
      * @return the number of vertices in this polygon.
      */
-    public int vertexNumber();
+    public int vertexCount();
 }
