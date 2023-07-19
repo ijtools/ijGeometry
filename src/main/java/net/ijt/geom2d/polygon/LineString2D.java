@@ -90,7 +90,7 @@ public class LineString2D implements Polyline2D
      * 
      * @return the number of vertices
      */
-    public int vertexNumber()
+    public int vertexCount()
     {
         return vertices.size();
     }
@@ -167,7 +167,7 @@ public class LineString2D implements Polyline2D
     @Override
     public LineString2D reverse()
     {
-        int n = this.vertexNumber();
+        int n = this.vertexCount();
         ArrayList<Point2D> newVertices = new ArrayList<Point2D>(n);
         for (int i = 0; i < n; i++)
         {
@@ -310,7 +310,7 @@ public class LineString2D implements Polyline2D
      */
     public LineString2D transform(AffineTransform2D trans)
     {
-        int n = this.vertexNumber();
+        int n = this.vertexCount();
         ArrayList<Point2D> newVertices = new ArrayList<Point2D>(n);
         for (int i = 0; i < n; i++)
         {

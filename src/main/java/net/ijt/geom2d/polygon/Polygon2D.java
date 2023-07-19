@@ -70,7 +70,7 @@ public interface Polygon2D extends PolygonalDomain2D
      */
     public static Polygon2D convert(Polyline2D polyline)
     {
-    	DefaultPolygon2D poly = new DefaultPolygon2D(polyline.vertexNumber());
+    	DefaultPolygon2D poly = new DefaultPolygon2D(polyline.vertexCount());
     	for (Point2D p : polyline.vertexPositions())
     	{
     		poly.addVertex(p);

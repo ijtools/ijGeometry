@@ -122,7 +122,7 @@ public interface Mesh3D extends Geometry3D
     /**
      * @return the number of vertices in this mesh.
      */
-    public int vertexNumber();
+    public int vertexCount();
 
     /**
      * @return the collection of vertices within this mesh.
@@ -145,7 +145,7 @@ public interface Mesh3D extends Geometry3D
     /**
      * @return the number of edges in this mesh.
      */
-    public int edgeNumber();
+    public int edgeCount();
 
     /**
      * Returns the collection of edges within this mesh (optional operation).
@@ -180,7 +180,7 @@ public interface Mesh3D extends Geometry3D
     /**
      * @return the number of faces in this mesh.
      */
-    public int faceNumber();
+    public int faceCount();
 
     /**
      * @return the collection of faces within this mesh.
@@ -213,15 +213,6 @@ public interface Mesh3D extends Geometry3D
          * @return the normal of this vertex, as a 3D Vector
          */
         public Vector3D normal();
-//        public default Vector3D normal()
-//        {
-//            Vector3D normal = new Vector3D();
-//            for (Mesh3D.Face face : vertexFaces(this))
-//            {
-//                normal.plus(face.normal());
-//            }
-//            return normal.normalize();
-//        }
         
         /**
          * @return the parent mesh of this vertex.

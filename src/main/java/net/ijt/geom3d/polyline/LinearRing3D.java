@@ -115,7 +115,7 @@ public class LinearRing3D implements Polyline3D
      * 
      * @return the number of vertices
      */
-    public int vertexNumber()
+    public int vertexCount()
     {
         return vertices.size();
     }
@@ -137,7 +137,7 @@ public class LinearRing3D implements Polyline3D
      */
     public LinearRing3D transform(AffineTransform3D trans)
     {
-        int n = this.vertexNumber();
+        int n = this.vertexCount();
         ArrayList<Point3D> newVertices = new ArrayList<Point3D>(n);
         for (int i = 0; i < n; i++)
         {
@@ -161,7 +161,7 @@ public class LinearRing3D implements Polyline3D
     {
         // create a new collection of vertices in reverse order, keeping first
         // vertex unchanged.
-        int n = this.vertexNumber();
+        int n = this.vertexCount();
         ArrayList<Point3D> newVertices = new ArrayList<Point3D>(n);
         newVertices.add(this.vertices.get(0));
         for (int i = 1; i < n; i++)
