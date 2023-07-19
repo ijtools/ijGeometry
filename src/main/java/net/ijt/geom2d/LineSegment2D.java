@@ -60,12 +60,13 @@ public class LineSegment2D implements LinearGeometry2D
     // Implementation of the LinearGeometry interface 
     
     /**
-	 * Compute the orthogonal projection of the input point onto this line segment.
-	 * 
-	 * @param point
-	 *            the point to project.
-	 * @return the position of the projected point.
-	 */
+     * Computes the orthogonal projection of the input point onto this line
+     * segment.
+     * 
+     * @param point
+     *            the point to project.
+     * @return the position of the projected point.
+     */
     public Point2D projection(Point2D point)
 	{
       double dx = x2 - x1;
@@ -136,7 +137,8 @@ public class LineSegment2D implements LinearGeometry2D
      * Returns the point at the specified position using the parametric
      * representation of this line.
      * 
-     * @param t the position on the line
+     * @param t
+     *            the position on the line
      * @return the point located at specified position
      */
     @Override

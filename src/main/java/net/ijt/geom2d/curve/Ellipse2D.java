@@ -18,7 +18,8 @@ import net.ijt.geom2d.Point2D;
 import net.ijt.geom2d.polygon.LinearRing2D;
 
 /**
- * An ellipse, defined by a center, two semi-axis lengths, and one orientation angle in degrees.
+ * An ellipse, defined by a center, two semi-axis lengths, and one orientation
+ * angle in degrees.
  * 
  * @author dlegland
  *
@@ -30,11 +31,13 @@ public class Ellipse2D implements Contour2D
     // Static methods
     
     /**
-     * Transform an ellipse, by supposing both the ellipse is centered and the
+     * Transforms an ellipse, by supposing both the ellipse is centered and the
      * transform has no translation part.
      * 
-     * @param ellipse an ellipse
-     * @param trans an affine transform
+     * @param ellipse
+     *            an ellipse
+     * @param trans
+     *            an affine transform
      * @return the transformed ellipse, centered around origin
      */
     private static Ellipse2D transformCentered(Ellipse2D ellipse, AffineTransform2D trans) {
@@ -66,12 +69,14 @@ public class Ellipse2D implements Contour2D
 
     /**
      * Transforms a conic centered around the origin, by dropping the
-     * translation part of the transform. The array must be contains at least
-     * 3 elements. If it contains 6 elements, the 3 remaining elements are
+     * translation part of the transform. The array must be contains at least 3
+     * elements. If it contains 6 elements, the 3 remaining elements are
      * supposed to be 0, 0, and -1 in that order.
      * 
-     * @param coefs an array of double with at least 3 coefficients
-     * @param trans an affine transform
+     * @param coefs
+     *            an array of double with at least 3 coefficients
+     * @param trans
+     *            an affine transform
      * @return an array of double with as many elements as the input array
      */
     private final static double[] transformCenteredConicCoefficients(double[] coefs, AffineTransform2D trans)
@@ -113,7 +118,8 @@ public class Ellipse2D implements Contour2D
      * Creates a new Ellipse by reducing the conic coefficients, assuming conic
      * type is ellipse, and ellipse is centered.
      * 
-     * @param coefs an array of double with at least 3 coefficients containing
+     * @param coefs
+     *            an array of double with at least 3 coefficients containing
      *            coefficients for x^2, x*y, and y^2 factors.
      * @return the Ellipse2D corresponding to given coefficients
      */
@@ -200,7 +206,7 @@ public class Ellipse2D implements Contour2D
     // Constructors
     
     /**
-     * Define center by point, major and minor semi axis lengths, and
+     * Defines center by point, major and minor semi axis lengths, and
      * orientation angle.
      * 
      * @param center
@@ -218,7 +224,7 @@ public class Ellipse2D implements Contour2D
     }
     
     /**
-     * Define center by coordinate, major and minor semi axis lengths, and
+     * Defines center by coordinates, major and minor semi axis lengths, and
      * orientation angle.
      * 
      * @param xc
@@ -273,12 +279,12 @@ public class Ellipse2D implements Contour2D
     }
 
     /**
-	 * Computes the area of this ellipse, by multiplying the product of semi axis
-	 * lengths by PI.
-	 * 
-	 * @return the area of this ellipse.
-	 * @see net.ijt.geom2d.curve.Circle2D#area()
-	 */
+     * Computes the area of this ellipse, by multiplying the product of semi
+     * axis lengths by PI.
+     * 
+     * @return the area of this ellipse.
+     * @see net.ijt.geom2d.curve.Circle2D#area()
+     */
     public double area()
     {
         return this.r1 * this.r2 * Math.PI;
@@ -407,15 +413,15 @@ public class Ellipse2D implements Contour2D
     }
     
     /**
-	 * Apply to the point the transform that transforms this ellipse into unit
-	 * circle, and computes distance to origin.
-	 * 
-	 * @param x
-	 *            the x-coordinate of the point
-	 * @param y
-	 *            the y-coordinate of the point
-	 * @return the distance of the transformed point to the origin
-	 */
+     * Applies to the point the transform that transforms this ellipse into unit
+     * circle, and computes distance to origin.
+     * 
+     * @param x
+     *            the x-coordinate of the point
+     * @param y
+     *            the y-coordinate of the point
+     * @return the distance of the transformed point to the origin
+     */
     private double quasiDistanceToCenter(double x, double y)
     {
     	// recenter point

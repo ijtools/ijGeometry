@@ -2,6 +2,12 @@ package net.ijt.geom2d;
 
 import static java.lang.Math.abs;
 
+/**
+ * A vector in the plane, defined by two components.
+ * 
+ * @author dlegland
+ *
+ */
 public class Vector2D
 {
     // ===================================================================
@@ -181,6 +187,8 @@ public class Vector2D
 
     /**
      * Returns the result of the given transformation applied to this vector.
+     * Uses only the linear part of the transform, discarding the translation
+     * part.
      * 
      * @param trans
      *            the transformation to apply
@@ -340,18 +348,4 @@ public class Vector2D
     {
         return 2;
     }
-
-//	/**
-//	 * Transform the vector, by using only the first 4 parameters of the
-//	 * transform. Translation of a vector returns the same vector.
-//	 * 
-//	 * @param trans
-//	 *            an affine transform
-//	 * @return the transformed vector.
-//	 */
-//	public Vector2d transform(AffineTransform2D trans)
-//	{
-//		return trans.transform(this);
-//	}
-
 }

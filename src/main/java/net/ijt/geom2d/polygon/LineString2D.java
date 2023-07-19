@@ -25,14 +25,13 @@ public class LineString2D implements Polyline2D
 {
     // ===================================================================
     // Class variables
-    
+
     private ArrayList<Point2D> vertices;
-    
-    
+
     // ===================================================================
     // Contructors
 
-    public LineString2D() 
+    public LineString2D()
     {
         this.vertices = new ArrayList<Point2D>();
     }
@@ -41,13 +40,14 @@ public class LineString2D implements Polyline2D
      * Creates a new linear curve by allocating enough memory for the specified
      * number of vertices.
      * 
-     * @param nVertices the number of vertices in this polyline
+     * @param nVertices
+     *            the number of vertices in this polyline
      */
     public LineString2D(int nVertices)
     {
         this.vertices = new ArrayList<Point2D>(nVertices);
     }
-    
+
     public LineString2D(Point2D... vertices)
     {
         this.vertices = new ArrayList<Point2D>(vertices.length);
@@ -56,13 +56,13 @@ public class LineString2D implements Polyline2D
             this.vertices.add(vertex);
         }
     }
-    
+
     public LineString2D(Collection<? extends Point2D> vertices)
     {
         this.vertices = new ArrayList<Point2D>(vertices.size());
         this.vertices.addAll(vertices);
     }
-    
+
     public LineString2D(double[] xcoords, double[] ycoords)
     {
         this.vertices = new ArrayList<Point2D>(xcoords.length);
@@ -73,11 +73,10 @@ public class LineString2D implements Polyline2D
             vertices.add(new Point2D(xcoords[i], ycoords[i]));
         }
     }
-    
- 
+
     // ===================================================================
     // Management of vertices
-    
+
     /**
      * Returns the inner collection of vertices.
      */
@@ -85,7 +84,7 @@ public class LineString2D implements Polyline2D
     {
         return vertices;
     }
-    
+
     /**
      * Returns the number of vertices.
      * 
@@ -100,17 +99,17 @@ public class LineString2D implements Polyline2D
     {
         this.vertices.add(vertexPosition);
     }
-    
+
     public void removeVertex(int vertexIndex)
     {
         this.vertices.remove(vertexIndex);
     }
-    
+
     public Point2D vertexPosition(int vertexIndex)
     {
         return this.vertices.get(vertexIndex);
     }
-    
+
     /**
      * Computes the index of the closest vertex to the input query point.
      * 
@@ -122,7 +121,7 @@ public class LineString2D implements Polyline2D
     {
         double minDist = Double.POSITIVE_INFINITY;
         int index = -1;
-        
+
         for (int i = 0; i < vertices.size(); i++)
         {
             double dist = vertices.get(i).distance(point);
@@ -132,23 +131,22 @@ public class LineString2D implements Polyline2D
                 minDist = dist;
             }
         }
-        
+
         return index;
     }
-    
 
     // ===================================================================
     // Methods implementing the Polyline2D interface
-    
+
     public LineString2D resampleBySpacing(double spacing)
     {
         // compute vertex number of resulting curve
         double length = this.length();
         int nv = (int) Math.round(length / spacing);
-        
+
         // adjust step length to avoid last edge to have different size
         double spacing2 = length / nv;
-        
+
         // create new vertices
         ArrayList<Point2D> vertices2 = new ArrayList<Point2D>(nv);
         for (int i = 0; i < nv - 1; i++)
@@ -157,10 +155,10 @@ public class LineString2D implements Polyline2D
             vertices2.add(getPointAtLength(pos));
         }
         vertices2.add(this.vertices.get(this.vertices.size() - 1));
-        
+
         return new LineString2D(vertices2);
     }
-    
+
     /**
      * Returns a new linear ring with same vertices but in reverse order. The
      * first vertex of the new line string is the last vertex of this line
@@ -173,9 +171,9 @@ public class LineString2D implements Polyline2D
         ArrayList<Point2D> newVertices = new ArrayList<Point2D>(n);
         for (int i = 0; i < n; i++)
         {
-            newVertices.add(this.vertices.get(n-1-i));
+            newVertices.add(this.vertices.get(n - 1 - i));
         }
-        
+
         LineString2D reverse = new LineString2D(0);
         reverse.vertices = newVertices;
         return reverse;
@@ -186,7 +184,7 @@ public class LineString2D implements Polyline2D
         double cumSum = 0;
         Iterator<Point2D> vertexIter = vertices.iterator();
         Point2D prev = vertexIter.next();
-        while(vertexIter.hasNext())
+        while (vertexIter.hasNext())
         {
             Point2D vertex = vertexIter.next();
             double dist = vertex.distance(prev);
@@ -196,7 +194,7 @@ public class LineString2D implements Polyline2D
                 double pos0 = pos - cumSum + dist;
                 double t1 = pos0 / dist;
                 double t0 = 1 - t1;
-                
+
                 double x = prev.getX() * t0 + vertex.getX() * t1;
                 double y = prev.getY() * t0 + vertex.getY() * t1;
                 return new Point2D(x, y);
@@ -206,58 +204,54 @@ public class LineString2D implements Polyline2D
         return prev;
     }
 
-
     // ===================================================================
     // Management of edges
-    
+
     public Polyline2D.Edge edge(int edgeIndex)
     {
-    	if (edgeIndex < 0 || edgeIndex >= vertices.size()-1)
-    	{
-    		throw new RuntimeException("Edge index out of bounds: " + edgeIndex);
-    	}
-    	return new Edge(edgeIndex);
+        if (edgeIndex < 0 || edgeIndex >= vertices.size() - 1)
+        { throw new RuntimeException("Edge index out of bounds: " + edgeIndex); }
+        return new Edge(edgeIndex);
     }
-    
+
     @Override
-	public Iterable<? extends Polyline2D.Edge> edges()
-	{
-		return new Iterable<Polyline2D.Edge>() 
-		{
-
-			@Override
-			public Iterator<Polyline2D.Edge> iterator()
-			{
-				return new EdgeIterator();
-			}
-		};
-	}
-
-	public Iterator<? extends Polyline2D.Edge> edgeIterator()
+    public Iterable<? extends Polyline2D.Edge> edges()
     {
-    	return new EdgeIterator();
+        return new Iterable<Polyline2D.Edge>()
+        {
+
+            @Override
+            public Iterator<Polyline2D.Edge> iterator()
+            {
+                return new EdgeIterator();
+            }
+        };
     }
-    
+
+    public Iterator<? extends Polyline2D.Edge> edgeIterator()
+    {
+        return new EdgeIterator();
+    }
 
     // ===================================================================
     // Methods implementing the Curve2D interface
-    
+
     public double length()
     {
         double cumSum = 0.0;
         Iterator<Point2D> vertexIter = vertices.iterator();
         Point2D prev = vertexIter.next();
-        while(vertexIter.hasNext())
+        while (vertexIter.hasNext())
         {
             Point2D vertex = vertexIter.next();
             double dist = vertex.distance(prev);
             cumSum += dist;
             prev = vertex;
         }
-        
+
         return cumSum;
     }
-    
+
     @Override
     public Point2D getPoint(double t)
     {
@@ -272,11 +266,10 @@ public class LineString2D implements Polyline2D
         Point2D p0 = vertices.get(ind0);
 
         // check if equal to last vertex
-        if (t == t1)
-            return p0;
+        if (t == t1) return p0;
 
         // index of vertex after point
-        int ind1 = ind0+1;
+        int ind1 = ind0 + 1;
         Point2D p1 = vertices.get(ind1);
 
         // position on line;
@@ -298,109 +291,107 @@ public class LineString2D implements Polyline2D
     {
         return vertices.size() - 1;
     }
+
     @Override
     public boolean isClosed()
     {
         return false;
     }
-    
 
     // ===================================================================
     // Implementation of Geometry methods
-    
-    /**
-	 * Transforms this geometry with the specified affine transform.
-	 * 
-	 * @param trans
-	 *            an affine transform
-	 * @return the transformed line string
-	 */
-	public LineString2D transform(AffineTransform2D trans)
-	{
-	    int n = this.vertexNumber();
-	    ArrayList<Point2D> newVertices = new ArrayList<Point2D>(n);
-	    for (int i = 0; i < n; i++)
-	    {
-	        newVertices.add(this.vertices.get(i).transform(trans));
-	    }
-	    
-	    LineString2D res = new LineString2D(0);
-	    res.vertices = newVertices;
-	    return res;
-	}
 
-	
+    /**
+     * Transforms this geometry with the specified affine transform.
+     * 
+     * @param trans
+     *            an affine transform
+     * @return the transformed line string
+     */
+    public LineString2D transform(AffineTransform2D trans)
+    {
+        int n = this.vertexNumber();
+        ArrayList<Point2D> newVertices = new ArrayList<Point2D>(n);
+        for (int i = 0; i < n; i++)
+        {
+            newVertices.add(this.vertices.get(i).transform(trans));
+        }
+
+        LineString2D res = new LineString2D(0);
+        res.vertices = newVertices;
+        return res;
+    }
+
     // ===================================================================
     // Inner class implementations
-    
-	private class Vertex implements Polyline2D.Vertex
-    {
-    	int index;
-    	
-    	public Vertex(int index)
-    	{
-    		this.index = index;
-    	}
 
-		@Override
-		public Point2D position()
-		{
-			return vertices.get(this.index);
-		}
+    private class Vertex implements Polyline2D.Vertex
+    {
+        int index;
+
+        public Vertex(int index)
+        {
+            this.index = index;
+        }
+
+        @Override
+        public Point2D position()
+        {
+            return vertices.get(this.index);
+        }
     }
-    
+
     public class Edge implements Polyline2D.Edge
     {
-    	int index;
+        int index;
 
-    	public Edge(int index)
-    	{
-    		this.index = index;
-    	}
-    	
-		@Override
-		public Polyline2D.Vertex source()
-		{
-			return new Vertex(this.index);
-		}
+        public Edge(int index)
+        {
+            this.index = index;
+        }
 
-		@Override
-		public Polyline2D.Vertex target()
-		{
-			return new Vertex(this.index + 1);
-		}
+        @Override
+        public Polyline2D.Vertex source()
+        {
+            return new Vertex(this.index);
+        }
 
-		@Override
-		public LineSegment2D curve()
-		{
-			Point2D v1 = vertices.get(this.index);
-			Point2D v2 = vertices.get(this.index + 1);
-			return new LineSegment2D(v1, v2);
-		}
+        @Override
+        public Polyline2D.Vertex target()
+        {
+            return new Vertex(this.index + 1);
+        }
+
+        @Override
+        public LineSegment2D curve()
+        {
+            Point2D v1 = vertices.get(this.index);
+            Point2D v2 = vertices.get(this.index + 1);
+            return new LineSegment2D(v1, v2);
+        }
     }
-    
-    
+
     // ===================================================================
     // Edge iterator implementation
-    
+
     class EdgeIterator implements Iterator<Polyline2D.Edge>
     {
-    	/**
-    	 * Index of the first vertex of current edge
-    	 */
-    	int index = 0;
+        /**
+         * Index of the first vertex of current edge
+         */
+        int index = 0;
 
-    	@Override
-		public boolean hasNext()
-		{
-			return index < vertices.size() - 1;
-		}
+        @Override
+        public boolean hasNext()
+        {
+            return index < vertices.size() - 1;
+        }
 
-		@Override
-		public Edge next()
-		{
-			return new Edge(this.index++);
-		}
+        @Override
+        public Edge next()
+        {
+            return new Edge(this.index++);
+        }
     }
-    
+
 }

@@ -24,14 +24,13 @@ public class LineString3D implements Polyline3D
 {
     // ===================================================================
     // Class variables
-    
+
     private ArrayList<Point3D> vertices;
-    
-    
+
     // ===================================================================
     // Constructors
 
-    public LineString3D() 
+    public LineString3D()
     {
         this.vertices = new ArrayList<Point3D>();
     }
@@ -40,13 +39,14 @@ public class LineString3D implements Polyline3D
      * Creates a new linear curve by allocating enough memory for the specified
      * number of vertices.
      * 
-     * @param nVertices the number of vertices in this polyline
+     * @param nVertices
+     *            the number of vertices in this polyline
      */
     public LineString3D(int nVertices)
     {
         this.vertices = new ArrayList<Point3D>(nVertices);
     }
-    
+
     public LineString3D(Point3D... vertices)
     {
         this.vertices = new ArrayList<Point3D>(vertices.length);
@@ -55,13 +55,13 @@ public class LineString3D implements Polyline3D
             this.vertices.add(vertex);
         }
     }
-    
+
     public LineString3D(Collection<? extends Point3D> vertices)
     {
         this.vertices = new ArrayList<Point3D>(vertices.size());
         this.vertices.addAll(vertices);
     }
-    
+
     public LineString3D(double[] xcoords, double[] ycoords, double[] zcoords)
     {
         this.vertices = new ArrayList<Point3D>(xcoords.length);
@@ -72,11 +72,10 @@ public class LineString3D implements Polyline3D
             vertices.add(new Point3D(xcoords[i], ycoords[i], zcoords[i]));
         }
     }
-    
- 
+
     // ===================================================================
     // Management of vertices
-    
+
     /**
      * Returns the inner collection of vertices.
      */
@@ -84,7 +83,7 @@ public class LineString3D implements Polyline3D
     {
         return vertices;
     }
-    
+
     /**
      * Returns the number of vertices.
      * 
@@ -106,7 +105,7 @@ public class LineString3D implements Polyline3D
     {
         double minDist = Double.POSITIVE_INFINITY;
         int index = -1;
-        
+
         for (int i = 0; i < vertices.size(); i++)
         {
             double dist = vertices.get(i).distance(point);
@@ -116,19 +115,18 @@ public class LineString3D implements Polyline3D
                 minDist = dist;
             }
         }
-        
+
         return index;
     }
-    
+
     public Iterator<LineSegment3D> edgeIterator()
     {
-    	return new EdgeIterator();
+        return new EdgeIterator();
     }
-    
 
     // ===================================================================
     // Methods implementing the Polyline3D interface
-    
+
     /**
      * Transforms this geometry with the specified affine transform.
      * 
@@ -144,7 +142,7 @@ public class LineString3D implements Polyline3D
         {
             newVertices.add(this.vertices.get(i).transform(trans));
         }
-        
+
         LineString3D res = new LineString3D(0);
         res.vertices = newVertices;
         return res;
@@ -162,18 +160,17 @@ public class LineString3D implements Polyline3D
         ArrayList<Point3D> newVertices = new ArrayList<Point3D>(n);
         for (int i = 0; i < n; i++)
         {
-            newVertices.add(this.vertices.get(n-1-i));
+            newVertices.add(this.vertices.get(n - 1 - i));
         }
-        
+
         LineString3D reverse = new LineString3D(0);
         reverse.vertices = newVertices;
         return reverse;
     }
 
-
     // ===================================================================
     // Methods implementing the Curve2D interface
-    
+
     @Override
     public Point3D getPoint(double t)
     {
@@ -187,12 +184,12 @@ public class LineString3D implements Polyline3D
         double tl = t - ind0;
         Point3D p0 = vertices.get(ind0);
 
-//        // check if equal to a vertex
-//        if (Math.abs(t - ind0) < Shape2D.ACCURACY)
-//            return p0;
+        // // check if equal to a vertex
+        // if (Math.abs(t - ind0) < Shape2D.ACCURACY)
+        // return p0;
 
         // index of vertex after point
-        int ind1 = ind0+1;
+        int ind1 = ind0 + 1;
         Point3D p1 = vertices.get(ind1);
 
         // position on line;
@@ -216,35 +213,35 @@ public class LineString3D implements Polyline3D
     {
         return vertices.size();
     }
+
     @Override
     public boolean isClosed()
     {
         return false;
     }
-    
 
     // ===================================================================
     // Edge iterator implementation
-    
+
     class EdgeIterator implements Iterator<LineSegment3D>
     {
-    	/**
-    	 * Index of the first vertex of current edge
-    	 */
-    	int index = -1;
+        /**
+         * Index of the first vertex of current edge
+         */
+        int index = -1;
 
-    	@Override
-		public boolean hasNext()
-		{
-			return index < vertices.size() - 2;
-		}
+        @Override
+        public boolean hasNext()
+        {
+            return index < vertices.size() - 2;
+        }
 
-		@Override
-		public LineSegment3D next()
-		{
-			index++;
-			int index2 = (index + 1) % vertices.size();
-			return new LineSegment3D(vertices.get(index), vertices.get(index2));
-		}
+        @Override
+        public LineSegment3D next()
+        {
+            index++;
+            int index2 = (index + 1) % vertices.size();
+            return new LineSegment3D(vertices.get(index), vertices.get(index2));
+        }
     }
 }

@@ -184,7 +184,8 @@ public class StraightLine2D implements LinearGeometry2D, Contour2D
      * Returns the point at the specified position using the parametric
      * representation of this line.
      * 
-     * @param t the position on the line
+     * @param t
+     *            the position on the line
      * @return the point located at specified position
      */
     @Override
