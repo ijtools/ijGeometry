@@ -9,6 +9,12 @@ package net.ijt.geom3d;
  */
 public interface AffineTransform3D extends Transform3D
 {
+    // ===================================================================
+    // static members
+    
+    public static AffineTransform3D IDENTITY = new DefaultAffineTransform3D(1, 0, 0, 0,  0, 1, 0, 0,  0, 0, 1, 0);
+    
+    
 	// ===================================================================
 	// static methods
 
@@ -52,21 +58,33 @@ public interface AffineTransform3D extends Transform3D
         return new DefaultAffineTransform3D(1, 0, 0, dx, 0, 1, 0, dy, 0, 0, 1, dz);
 	}
 
-	/**
-	 * Creates a scaling by the given coefficients, centered on the origin.
-	 * 
-	 * @param sx
-	 *            the scaling along the x direction
+    /**
+     * Creates a uniform scaling in the three directions by the given coefficient, centered on the origin.
+     * 
+     * @param s
+     *            the scaling factor
+     * @return a new instance of AffineTransform3D representing a translation
+     */
+    public static AffineTransform3D createScaling(double s)
+    {
+        return new DefaultAffineTransform3D(s, 0, 0, 0,  0, s, 0, 0,   0, 0, s, 0);
+    }
+
+    /**
+     * Creates a scaling by the given coefficients, centered on the origin.
+     * 
+     * @param sx
+     *            the scaling along the x direction
      * @param sy
      *            the scaling along the y direction
      * @param sz
      *            the scaling along the z direction
-	 * @return a new instance of AffineTransform3D representing a translation
-	 */
-	public static AffineTransform3D createScaling(double sx, double sy, double sz)
-	{
-		return new DefaultAffineTransform3D(sx, 0, 0, 0,  0, sy, 0, 0,   0, 0, sz, 0);
-	}
+     * @return a new instance of AffineTransform3D representing a translation
+     */
+    public static AffineTransform3D createScaling(double sx, double sy, double sz)
+    {
+        return new DefaultAffineTransform3D(sx, 0, 0, 0,  0, sy, 0, 0,   0, 0, sz, 0);
+    }
 
 	/**
 	 * Creates a scaling by the given coefficients, centered on the given point.
@@ -158,6 +176,22 @@ public interface AffineTransform3D extends Transform3D
         double sit = Math.sin(theta);
         return new DefaultAffineTransform3D(cot, -sit, 0, 0, sit, cot, 0, 0, 0, 0, 1,
                 0);
+    }
+
+    /**
+     * Converts a 3-by-4 or 4-by-4 numeric array containing coefficients of the
+     * affine transform into an instance of AffineTransform3D.
+     * 
+     * @param mat
+     *            the array containing transform coefficients.
+     * @return the corresponding AffineTransform3D
+     */
+    public static AffineTransform3D fromMatrix(double[][] mat)
+    {
+        return new DefaultAffineTransform3D(
+                mat[0][0], mat[0][1], mat[0][2], mat[0][3], 
+                mat[1][0], mat[1][1], mat[1][2], mat[1][3], 
+                mat[2][0], mat[2][1], mat[2][2], mat[2][3]);
     }
 
 
