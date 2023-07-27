@@ -18,6 +18,30 @@ public class Vector3D
 
     private final static double DEFAULT_TOL = 1e-12;
     
+    // ===================================================================
+    // Public constants
+
+    /**
+     * The first (normalized) spanning vector of the 3-dimensional space,
+     * corresponding to the (1,0,0) vector. Usually associated to the "x"
+     * direction.
+     */
+    public final static Vector3D E_1 = new Vector3D(1, 0, 0);
+    
+    /**
+     * The second (normalized) spanning vector of the 3-dimensional space,
+     * corresponding to the (0,1,0) vector. Usually associated to the "y"
+     * direction.
+     */
+    public final static Vector3D E_2 = new Vector3D(0, 1, 0);
+
+    /**
+     * The third (normalized) spanning vector of the 3-dimensional space,
+     * corresponding to the (0,0,1) vector. Usually associated to the "z"
+     * direction.
+     */
+    public final static Vector3D E_3 = new Vector3D(0, 0, 1);
+    
     
     // ===================================================================
     // Static methods
@@ -310,6 +334,15 @@ public class Vector3D
 	    return trans.transform(this);
 	}
 	
+    public boolean almostEquals(Vector3D that, double tol)
+    {
+        if (Math.abs(this.x - that.x) > tol) return false;
+        if (Math.abs(this.y - that.y) > tol) return false;
+        if (Math.abs(this.z - that.z) > tol) return false;
+        return true;
+    }
+    
+
 
     // ===================================================================
     // Implements Dimensional interface
