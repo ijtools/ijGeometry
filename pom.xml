@@ -43,6 +43,14 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <scope>test</scope>
         </dependency>
         
+	    <!-- Jama is used for matrix operations (SVD)-->
+	    <!-- e. g. in ellipsoid reduction, or PCA computation -->
+	    <!-- https://mvnrepository.com/artifact/gov.nist.math/jama -->
+	    <dependency>
+	        <groupId>gov.nist.math</groupId>
+	        <artifactId>jama</artifactId>
+	        <version>1.0.3</version>
+	    </dependency>
     </dependencies>
     
     
