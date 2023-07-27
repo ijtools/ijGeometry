@@ -12,7 +12,7 @@ import java.util.Locale;
  * @author dlegland
  *
  */
-public class DefaultAffineTransform3D implements AffineTransform3D
+public class MatrixAffineTransform3D implements AffineTransform3D
 {
 	// ===================================================================
 	// Class members
@@ -33,7 +33,7 @@ public class DefaultAffineTransform3D implements AffineTransform3D
 	/**
 	 * Empty constructor, that creates an instance of the identity transform.
 	 */
-	public DefaultAffineTransform3D()
+	public MatrixAffineTransform3D()
 	{
 		m00 = 1;
 		m01 = 0;
@@ -49,7 +49,7 @@ public class DefaultAffineTransform3D implements AffineTransform3D
         m23 = 0;
 	}
 
-	public DefaultAffineTransform3D(
+	public MatrixAffineTransform3D(
             double xx, double yx, double zx, double tx, 
             double xy, double yy, double zy, double ty, 
             double xz, double yz, double zz, double tz)
@@ -145,7 +145,7 @@ public class DefaultAffineTransform3D implements AffineTransform3D
 	 * @return the inverse of this transform
 	 * @throws a RuntimeException
 	 */
-	public DefaultAffineTransform3D inverse()
+	public MatrixAffineTransform3D inverse()
 	{
         double det = this.determinant();
 
@@ -153,7 +153,7 @@ public class DefaultAffineTransform3D implements AffineTransform3D
         if (Math.abs(det) < 1e-12)
             throw new RuntimeException("Non-invertible matrix");
         
-        return new DefaultAffineTransform3D(
+        return new MatrixAffineTransform3D(
                 (m11 * m22 - m21 * m12) / det,
                 (m21 * m02 - m01 * m22) / det,
                 (m01 * m12 - m11 * m02) / det,

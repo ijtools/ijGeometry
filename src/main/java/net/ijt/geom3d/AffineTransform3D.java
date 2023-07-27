@@ -12,7 +12,7 @@ public interface AffineTransform3D extends Transform3D
     // ===================================================================
     // static members
     
-    public static AffineTransform3D IDENTITY = new DefaultAffineTransform3D(1, 0, 0, 0,  0, 1, 0, 0,  0, 0, 1, 0);
+    public static AffineTransform3D IDENTITY = new MatrixAffineTransform3D(1, 0, 0, 0,  0, 1, 0, 0,  0, 0, 1, 0);
     
     
 	// ===================================================================
@@ -55,7 +55,7 @@ public interface AffineTransform3D extends Transform3D
 	 */
 	public static AffineTransform3D createTranslation(double dx, double dy, double dz)
 	{
-        return new DefaultAffineTransform3D(1, 0, 0, dx, 0, 1, 0, dy, 0, 0, 1, dz);
+        return new MatrixAffineTransform3D(1, 0, 0, dx, 0, 1, 0, dy, 0, 0, 1, dz);
 	}
 
     /**
@@ -67,7 +67,7 @@ public interface AffineTransform3D extends Transform3D
      */
     public static AffineTransform3D createScaling(double s)
     {
-        return new DefaultAffineTransform3D(s, 0, 0, 0,  0, s, 0, 0,   0, 0, s, 0);
+        return new MatrixAffineTransform3D(s, 0, 0, 0,  0, s, 0, 0,   0, 0, s, 0);
     }
 
     /**
@@ -83,7 +83,7 @@ public interface AffineTransform3D extends Transform3D
      */
     public static AffineTransform3D createScaling(double sx, double sy, double sz)
     {
-        return new DefaultAffineTransform3D(sx, 0, 0, 0,  0, sy, 0, 0,   0, 0, sz, 0);
+        return new MatrixAffineTransform3D(sx, 0, 0, 0,  0, sy, 0, 0,   0, 0, sz, 0);
     }
 
 	/**
@@ -102,7 +102,7 @@ public interface AffineTransform3D extends Transform3D
 	public static AffineTransform3D createScaling(Point3D center, double sx,
 			double sy, double sz)
 	{
-		return new DefaultAffineTransform3D(
+		return new MatrixAffineTransform3D(
 				sx, 0, 0, (1 - sx) * center.getX(), 
                 0, sy, 0, (1 - sy) * center.getY(),
                 0, 0, sz, (1 - sz) * center.getZ());
@@ -119,7 +119,7 @@ public interface AffineTransform3D extends Transform3D
     {
         double cot = Math.cos(theta);
         double sit = Math.sin(theta);
-        return new DefaultAffineTransform3D(
+        return new MatrixAffineTransform3D(
                 1, 0, 0, 0, 
                 0, cot, -sit, 0, 
                 0, sit, cot, 0);
@@ -140,7 +140,7 @@ public interface AffineTransform3D extends Transform3D
         double sit = Math.sin(theta);
         double ty =  (1 - cot) * center.getY() + sit * center.getZ();
         double tz =  (1 - cot) * center.getZ() - sit * center.getY();
-        return new DefaultAffineTransform3D(
+        return new MatrixAffineTransform3D(
                 1, 0, 0, 0, 
                 0, cot, -sit, ty, 
                 0, sit, cot, tz);
@@ -157,7 +157,7 @@ public interface AffineTransform3D extends Transform3D
     {
         double cot = Math.cos(theta);
         double sit = Math.sin(theta);
-        return new DefaultAffineTransform3D(
+        return new MatrixAffineTransform3D(
                  cot, 0, sit, 0, 
                    0, 1,   0, 0, 
                 -sit, 0, cot, 0);
@@ -174,7 +174,7 @@ public interface AffineTransform3D extends Transform3D
     {
         double cot = Math.cos(theta);
         double sit = Math.sin(theta);
-        return new DefaultAffineTransform3D(cot, -sit, 0, 0, sit, cot, 0, 0, 0, 0, 1,
+        return new MatrixAffineTransform3D(cot, -sit, 0, 0, sit, cot, 0, 0, 0, 0, 1,
                 0);
     }
 
@@ -188,7 +188,7 @@ public interface AffineTransform3D extends Transform3D
      */
     public static AffineTransform3D fromMatrix(double[][] mat)
     {
-        return new DefaultAffineTransform3D(
+        return new MatrixAffineTransform3D(
                 mat[0][0], mat[0][1], mat[0][2], mat[0][3], 
                 mat[1][0], mat[1][1], mat[1][2], mat[1][3], 
                 mat[2][0], mat[2][1], mat[2][2], mat[2][3]);
@@ -224,7 +224,7 @@ public interface AffineTransform3D extends Transform3D
         double n21 = m1[2][0] * m2[0][1] + m1[2][1] * m2[1][1] + m1[2][2] * m2[2][1];
         double n22 = m1[2][0] * m2[0][2] + m1[2][1] * m2[1][2] + m1[2][2] * m2[2][2];
         double n23 = m1[2][0] * m2[0][3] + m1[2][1] * m2[1][3] + m1[2][2] * m2[2][3] + m1[2][3];
-        return new DefaultAffineTransform3D(n00, n01, n02, n03, n10, n11, n12, n13, n20, n21, n22, n23);
+        return new MatrixAffineTransform3D(n00, n01, n02, n03, n10, n11, n12, n13, n20, n21, n22, n23);
     }
 
     /**
@@ -259,7 +259,7 @@ public interface AffineTransform3D extends Transform3D
         double n21 = m1[2][0] * m2[0][1] + m1[2][1] * m2[1][1] + m1[2][2] * m2[2][1];
         double n22 = m1[2][0] * m2[0][2] + m1[2][1] * m2[1][2] + m1[2][2] * m2[2][2];
         double n23 = m1[2][0] * m2[0][3] + m1[2][1] * m2[1][3] + m1[2][2] * m2[2][3] + m1[2][3];
-        return new DefaultAffineTransform3D(n00, n01, n02, n03, n10, n11, n12, n13, n20, n21, n22, n23);
+        return new MatrixAffineTransform3D(n00, n01, n02, n03, n10, n11, n12, n13, n20, n21, n22, n23);
     }
 
 
