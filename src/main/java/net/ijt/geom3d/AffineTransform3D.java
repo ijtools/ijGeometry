@@ -27,7 +27,7 @@ public interface AffineTransform3D extends Transform3D
      */
     public static AffineTransform3D createTranslation(Vector3D vect)
     {
-        return createTranslation(vect.getX(), vect.getY(), vect.getZ());
+        return createTranslation(vect.x(), vect.y(), vect.z());
     }
 
     /**
@@ -39,7 +39,7 @@ public interface AffineTransform3D extends Transform3D
      */
     public static AffineTransform3D createTranslation(Point3D pos)
     {
-        return createTranslation(pos.getX(), pos.getY(), pos.getZ());
+        return createTranslation(pos.x(), pos.y(), pos.z());
     }
 
 	/**
@@ -103,9 +103,9 @@ public interface AffineTransform3D extends Transform3D
 			double sy, double sz)
 	{
 		return new MatrixAffineTransform3D(
-				sx, 0, 0, (1 - sx) * center.getX(), 
-                0, sy, 0, (1 - sy) * center.getY(),
-                0, 0, sz, (1 - sz) * center.getZ());
+				sx, 0, 0, (1 - sx) * center.x(), 
+                0, sy, 0, (1 - sy) * center.y(),
+                0, 0, sz, (1 - sz) * center.z());
 	}
 
     /**
@@ -138,8 +138,8 @@ public interface AffineTransform3D extends Transform3D
     {
         double cot = Math.cos(theta);
         double sit = Math.sin(theta);
-        double ty =  (1 - cot) * center.getY() + sit * center.getZ();
-        double tz =  (1 - cot) * center.getZ() - sit * center.getY();
+        double ty =  (1 - cot) * center.y() + sit * center.z();
+        double tz =  (1 - cot) * center.z() - sit * center.y();
         return new MatrixAffineTransform3D(
                 1, 0, 0, 0, 
                 0, cot, -sit, ty, 
@@ -286,9 +286,9 @@ public interface AffineTransform3D extends Transform3D
 	public default Point3D transform(Point3D point)
 	{
 		double[][] mat = this.affineMatrix();
-		double x = point.getX();
-        double y = point.getY();
-        double z = point.getZ();
+		double x = point.x();
+        double y = point.y();
+        double z = point.z();
 		
         double xt = x * mat[0][0] + y * mat[0][1] + z * mat[0][2] +  mat[0][3]; 
         double yt = x * mat[1][0] + y * mat[1][1] + z * mat[1][2] +  mat[1][3]; 
@@ -306,9 +306,9 @@ public interface AffineTransform3D extends Transform3D
 	 */
 	public default Vector3D transform(Vector3D v)
 	{
-		double vx = v.getX();
-        double vy = v.getY();
-        double vz = v.getZ();
+		double vx = v.x();
+        double vy = v.y();
+        double vz = v.z();
 		double[][] mat = this.affineMatrix();
 		return new Vector3D(
 				vx * mat[0][0] + vy * mat[0][1] + vz * mat[0][2], 

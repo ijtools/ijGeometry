@@ -24,7 +24,7 @@ public interface AffineTransform2D extends Transform2D
 	 */
 	public static AffineTransform2D createTranslation(Vector2D vect)
 	{
-		return new MatrixAffineTransform2D(1, 0, vect.getX(), 0, 1, vect.getY());
+		return new MatrixAffineTransform2D(1, 0, vect.x(), 0, 1, vect.y());
 	}
 
 	/**
@@ -71,8 +71,8 @@ public interface AffineTransform2D extends Transform2D
 			double sy)
 	{
 		return new MatrixAffineTransform2D(
-				sx, 0, (1 - sx) * center.getX(), 
-				0, sy, (1 - sy) * center.getY());
+				sx, 0, (1 - sx) * center.x(), 
+				0, sy, (1 - sy) * center.y());
 	}
 
 	/**
@@ -98,7 +98,7 @@ public interface AffineTransform2D extends Transform2D
 	 */
 	public static AffineTransform2D createRotation(Point2D center, double angle)
 	{
-		return createRotation(center.getX(), center.getY(), angle);
+		return createRotation(center.x(), center.y(), angle);
 	}
 
 	/**
@@ -165,7 +165,7 @@ public interface AffineTransform2D extends Transform2D
 	public static MatrixAffineTransform2D createQuadrantRotation(Point2D center,
 			int numQuadrant)
 	{
-		return createQuadrantRotation(center.getX(), center.getY(), numQuadrant);
+		return createQuadrantRotation(center.x(), center.y(), numQuadrant);
 	}
 
 	/**
@@ -330,8 +330,8 @@ public interface AffineTransform2D extends Transform2D
 	public default Point2D transform(Point2D point)
 	{
 		double[][] mat = this.affineMatrix();
-		double x = point.getX();
-		double y = point.getY();
+		double x = point.x();
+		double y = point.y();
 		
 		double xt = x * mat[0][0] + y * mat[0][1] + mat[0][2]; 
 		double yt = x * mat[1][0] + y * mat[1][1] + mat[1][2];
@@ -348,8 +348,8 @@ public interface AffineTransform2D extends Transform2D
 	 */
 	public default Vector2D transform(Vector2D v)
 	{
-		double vx = v.getX();
-		double vy = v.getY();
+		double vx = v.x();
+		double vy = v.y();
 		double[][] mat = this.affineMatrix();
 		return new Vector2D(
 				vx * mat[0][0] + vy * mat[0][1], 

@@ -101,8 +101,8 @@ public class LinearRing2D implements Polyline2D, Contour2D
             for (int i2 = i - M1; i2 <= i + M2; i2++)
             {
                 Point2D v = vertices.get((i2 % nv + nv) % nv);
-                x += v.getX();
-                y += v.getY();
+                x += v.x();
+                y += v.y();
             }
             x /= smoothingSize;
             y /= smoothingSize;
@@ -157,7 +157,7 @@ public class LinearRing2D implements Polyline2D, Contour2D
         for (Point2D point : this.vertices)
         {
             // add area of elementary parallelogram
-            area += prev.getX() * point.getY() - prev.getY() * point.getX();
+            area += prev.x() * point.y() - prev.y() * point.x();
             prev = point;
         }
 
@@ -210,7 +210,7 @@ public class LinearRing2D implements Polyline2D, Contour2D
     @Override
     public double signedDistance(Point2D point)
     {
-        return signedDistance(point.getX(), point.getY());
+        return signedDistance(point.x(), point.y());
     }
 
     public double signedDistance(double x, double y)
@@ -225,8 +225,8 @@ public class LinearRing2D implements Polyline2D, Contour2D
         // initialize iteration with last vertex
         Point2D p0 = this.vertices.get(this.vertices.size() - 1);
         Point2D previous = p0;
-        double xprev = previous.getX();
-        double yprev = previous.getY();
+        double xprev = previous.x();
+        double yprev = previous.y();
 
         // iterate over vertex pairs
         for (Point2D current : this.vertices)
@@ -236,8 +236,8 @@ public class LinearRing2D implements Polyline2D, Contour2D
             minDist = Math.min(dist, minDist);
 
             // coordinates of current vertex
-            double xcurr = current.getX();
-            double ycurr = current.getY();
+            double xcurr = current.x();
+            double ycurr = current.y();
 
             // update area computation
             area += xprev * ycurr - yprev * xcurr;
@@ -267,7 +267,7 @@ public class LinearRing2D implements Polyline2D, Contour2D
     @Override
     public boolean isInside(Point2D point)
     {
-        return isInside(point.getX(), point.getY());
+        return isInside(point.x(), point.y());
     }
 
     @Override
@@ -280,15 +280,15 @@ public class LinearRing2D implements Polyline2D, Contour2D
 
         // initialize with the last vertex
         Point2D previous = this.vertices.get(vertices.size() - 1);
-        double xprev = previous.getX();
-        double yprev = previous.getY();
+        double xprev = previous.x();
+        double yprev = previous.y();
 
         // iterate on vertices, keeping coordinates of previous vertex in memory
         for (Point2D current : vertices)
         {
             // coordinates of current vertex
-            double xcurr = current.getX();
-            double ycurr = current.getY();
+            double xcurr = current.x();
+            double ycurr = current.y();
 
             // update area computation
             area += xprev * ycurr - yprev * xcurr;
@@ -379,8 +379,8 @@ public class LinearRing2D implements Polyline2D, Contour2D
                 double t1 = pos0 / dist;
                 double t0 = 1 - t1;
 
-                double x = prev.getX() * t0 + vertex.getX() * t1;
-                double y = prev.getY() * t0 + vertex.getY() * t1;
+                double x = prev.x() * t0 + vertex.x() * t1;
+                double y = prev.y() * t0 + vertex.y() * t1;
                 return new Point2D(x, y);
             }
             prev = vertex;
@@ -396,8 +396,8 @@ public class LinearRing2D implements Polyline2D, Contour2D
             double t1 = pos0 / dist;
             double t0 = 1 - t1;
 
-            double x = prev.getX() * t0 + vertex.getX() * t1;
-            double y = prev.getY() * t0 + vertex.getY() * t1;
+            double x = prev.x() * t0 + vertex.x() * t1;
+            double y = prev.y() * t0 + vertex.y() * t1;
             return new Point2D(x, y);
         }
 
@@ -491,10 +491,10 @@ public class LinearRing2D implements Polyline2D, Contour2D
         Point2D p1 = vertices.get(ind1);
 
         // position on line;
-        double x0 = p0.getX();
-        double y0 = p0.getY();
-        double dx = p1.getX() - x0;
-        double dy = p1.getY() - y0;
+        double x0 = p0.x();
+        double y0 = p0.y();
+        double dx = p1.x() - x0;
+        double dy = p1.y() - y0;
 
         return new Point2D(x0 + tl * dx, y0 + tl * dy);
     }

@@ -195,8 +195,8 @@ public class LineString2D implements Polyline2D
                 double t1 = pos0 / dist;
                 double t0 = 1 - t1;
 
-                double x = prev.getX() * t0 + vertex.getX() * t1;
-                double y = prev.getY() * t0 + vertex.getY() * t1;
+                double x = prev.x() * t0 + vertex.x() * t1;
+                double y = prev.y() * t0 + vertex.y() * t1;
                 return new Point2D(x, y);
             }
             prev = vertex;
@@ -273,10 +273,10 @@ public class LineString2D implements Polyline2D
         Point2D p1 = vertices.get(ind1);
 
         // position on line;
-        double x0 = p0.getX();
-        double y0 = p0.getY();
-        double dx = p1.getX() - x0;
-        double dy = p1.getY() - y0;
+        double x0 = p0.x();
+        double y0 = p0.y();
+        double dx = p1.x() - x0;
+        double dy = p1.y() - y0;
         return new Point2D(x0 + tl * dx, y0 + tl * dy);
     }
 

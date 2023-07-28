@@ -200,7 +200,7 @@ public class Vector3D
 	/**
 	 * @return the x coordinate of this vector
 	 */
-	public double getX()
+	public double x()
 	{
 		return x;
 	}
@@ -208,7 +208,7 @@ public class Vector3D
 	/**
 	 * @return the y coordinate of this vector
 	 */
-	public double getY()
+	public double y()
 	{
 		return y;
 	}
@@ -217,7 +217,7 @@ public class Vector3D
 	/**
 	 * @return the z coordinate of this vector
 	 */
-	public double getZ()
+	public double z()
 	{
 		return z;
 	}

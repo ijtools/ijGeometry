@@ -50,7 +50,7 @@ public interface Geometry2D extends Geometry
      */
     public default double distance(Point2D point)
     {
-        return distance(point.getX(), point.getY());
+        return distance(point.x(), point.y());
     }
     
     /**

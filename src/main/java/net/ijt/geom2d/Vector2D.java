@@ -324,7 +324,7 @@ public class Vector2D
     /**
      * @return the x coordinate of this vector
      */
-    public double getX()
+    public double x()
     {
         return x;
     }
@@ -332,7 +332,7 @@ public class Vector2D
     /**
      * @return the y coordinate of this vector
      */
-    public double getY()
+    public double y()
     {
         return y;
     }

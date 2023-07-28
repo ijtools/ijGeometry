@@ -200,12 +200,12 @@ public class LinearRing3D implements Polyline3D
         Point3D p1 = vertices.get(ind1);
 
         // position on line;
-        double x0 = p0.getX();
-        double y0 = p0.getY();
-        double z0 = p0.getZ();
-        double dx = p1.getX() - x0;
-        double dy = p1.getY() - y0;
-        double dz = p1.getZ() - z0;
+        double x0 = p0.x();
+        double y0 = p0.y();
+        double z0 = p0.z();
+        double dx = p1.x() - x0;
+        double dy = p1.y() - y0;
+        double dz = p1.z() - z0;
 
         return new Point3D(x0 + tl * dx, y0 + tl * dy, z0 + tl * dz);
     }

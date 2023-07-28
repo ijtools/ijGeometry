@@ -49,7 +49,7 @@ public class Circle2D implements Contour2D
      */
     public Circle2D(Point2D center, double radius)
     {
-        this(center.getX(), center.getY(), radius);
+        this(center.x(), center.y(), radius);
     }
     
     /**
@@ -134,7 +134,7 @@ public class Circle2D implements Contour2D
     
     public double signedDistance(Point2D point)
     {
-        return this.signedDistance(point.getX(), point.getY());
+        return this.signedDistance(point.x(), point.y());
     }
 
     public double signedDistance(double x, double y)
@@ -146,7 +146,7 @@ public class Circle2D implements Contour2D
 
     public boolean isInside(Point2D point)
     {
-    	return isInside(point.getX(), point.getY());
+    	return isInside(point.x(), point.y());
     }
 
     public boolean isInside(double x, double y)
@@ -201,7 +201,7 @@ public class Circle2D implements Contour2D
     @Override
     public boolean contains(Point2D point, double eps)
     {
-    	double rho = hypot(point.getX() - xc, point.getY() - yc);    	
+    	double rho = hypot(point.x() - xc, point.y() - yc);    	
         return Math.abs(rho - radius) <= eps;
     }
     

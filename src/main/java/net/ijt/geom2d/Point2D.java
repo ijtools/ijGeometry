@@ -88,7 +88,7 @@ public class Point2D implements Geometry2D, Point
      */
     public Point2D plus(Vector2D v)
     {
-        return new Point2D(this.x + v.getX(), this.y + v.getY());
+        return new Point2D(this.x + v.x(), this.y + v.y());
     }
 
     /**
@@ -100,7 +100,7 @@ public class Point2D implements Geometry2D, Point
      */
     public Point2D minus(Vector2D v)
     {
-        return new Point2D(this.x - v.getX(), this.y - v.getY());
+        return new Point2D(this.x - v.x(), this.y - v.y());
     }
 
     public boolean almostEquals(Point2D point, double eps)
@@ -116,7 +116,7 @@ public class Point2D implements Geometry2D, Point
     /**
      * @return the x coordinate of this point
      */
-    public double getX()
+    public double x()
     {
         return x;
     }
@@ -124,7 +124,7 @@ public class Point2D implements Geometry2D, Point
     /**
      * @return the y coordinate of this point
      */
-    public double getY()
+    public double y()
     {
         return y;
     }
