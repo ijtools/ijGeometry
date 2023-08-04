@@ -1,11 +1,7 @@
 /**
  * 
  */
-package net.ijt.geom2d.curve;
-
-import net.ijt.geom2d.Bounds2D;
-import net.ijt.geom2d.Domain2D;
-import net.ijt.geom2d.Point2D;
+package net.ijt.geom2d;
 
 /**
  * A domain determined by a boundary curve.

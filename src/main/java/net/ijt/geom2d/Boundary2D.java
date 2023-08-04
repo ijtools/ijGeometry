@@ -1,12 +1,9 @@
 /**
  * 
  */
-package net.ijt.geom2d.curve;
+package net.ijt.geom2d;
 
 import java.util.Collection;
-
-import net.ijt.geom2d.CurveShape2D;
-import net.ijt.geom2d.Point2D;
 
 /**
  * A specialization of the CurveShape2D interface that represents the boundary

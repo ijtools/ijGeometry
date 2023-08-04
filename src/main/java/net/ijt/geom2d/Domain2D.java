@@ -3,8 +3,6 @@
  */
 package net.ijt.geom2d;
 
-import net.ijt.geom2d.curve.Boundary2D;
-
 /**
  * A planar domain, such as a polygon, or the interior of a disc.
  * 
@@ -12,7 +10,7 @@ import net.ijt.geom2d.curve.Boundary2D;
  * the CurveShape2D interface.
  *
  * @see net.ijt.geom2d.polygon.PolygonalDomain2D
- * @see net.ijt.geom2d.curve.Boundary2D
+ * @see net.ijt.geom2d.Boundary2D
  * 
  * @author dlegland
  */

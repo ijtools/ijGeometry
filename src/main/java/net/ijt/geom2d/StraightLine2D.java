@@ -4,7 +4,6 @@
 package net.ijt.geom2d;
 
 import net.ijt.geom.UnboundedGeometryException;
-import net.ijt.geom2d.curve.Contour2D;
 
 /**
  * A straight line, with infinite bounds in each direction.

@@ -1,12 +1,10 @@
 /**
  * 
  */
-package net.ijt.geom2d.curve;
+package net.ijt.geom2d;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
-import net.ijt.geom2d.Curve2D;
 
 /**
  * A continuous curve that can represent the contour of a region in the plane.

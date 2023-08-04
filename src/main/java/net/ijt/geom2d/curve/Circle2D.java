@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import net.ijt.geom2d.AffineTransform2D;
 import net.ijt.geom2d.Bounds2D;
+import net.ijt.geom2d.Contour2D;
 import net.ijt.geom2d.Point2D;
 import net.ijt.geom2d.polygon.LinearRing2D;
 
