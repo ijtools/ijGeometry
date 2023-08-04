@@ -84,7 +84,7 @@ public class StraightLine2D implements LinearGeometry2D, Contour2D
     {
         if (Math.hypot(dx, dy) < Geometry2D.MIN_VECTOR_NORM)
         {
-            throw new RuntimeException("The direction vector of the line hastoo small norm");
+            throw new RuntimeException("The direction vector of the line has too small norm");
         }
 
         double denom = dx * dx + dy * dy;
@@ -95,7 +95,7 @@ public class StraightLine2D implements LinearGeometry2D, Contour2D
     {
         if (Math.hypot(dx, dy) < Geometry2D.MIN_VECTOR_NORM)
         {
-            throw new RuntimeException("The direction vector of the line hastoo small norm");
+            throw new RuntimeException("The direction vector of the line has too small norm");
         }
 
         double denom = dx * dx + dy * dy;
@@ -188,7 +188,7 @@ public class StraightLine2D implements LinearGeometry2D, Contour2D
      * @return the point located at specified position
      */
     @Override
-    public Point2D getPoint(double t)
+    public Point2D point(double t)
     {
         double x = this.x0 + t * this.dx;
         double y = this.y0 + t * this.dy;
@@ -196,13 +196,13 @@ public class StraightLine2D implements LinearGeometry2D, Contour2D
     }
 
     @Override
-    public double getT0()
+    public double t0()
     {
         return Double.NEGATIVE_INFINITY;
     }
 
     @Override
-    public double getT1()
+    public double t1()
     {
         return Double.POSITIVE_INFINITY;
     }

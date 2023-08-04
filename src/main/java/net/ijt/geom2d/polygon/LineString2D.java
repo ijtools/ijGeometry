@@ -253,11 +253,11 @@ public class LineString2D implements Polyline2D
     }
 
     @Override
-    public Point2D getPoint(double t)
+    public Point2D point(double t)
     {
         // format position to stay between limits
-        double t0 = this.getT0();
-        double t1 = this.getT1();
+        double t0 = this.t0();
+        double t1 = this.t1();
         t = Math.max(Math.min(t, t1), t0);
 
         // index of vertex before point
@@ -281,13 +281,13 @@ public class LineString2D implements Polyline2D
     }
 
     @Override
-    public double getT0()
+    public double t0()
     {
         return 0;
     }
 
     @Override
-    public double getT1()
+    public double t1()
     {
         return vertices.size() - 1;
     }

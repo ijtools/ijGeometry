@@ -170,7 +170,7 @@ public class Circle2D implements Contour2D
     // Methods implementing the Curve2D interface
     
     @Override
-    public Point2D getPoint(double t)
+    public Point2D point(double t)
     {
         // position for a centered and axis-aligned ellipse
         double x = this.radius * cos(t) + this.xc;
@@ -179,13 +179,13 @@ public class Circle2D implements Contour2D
     }
 
     @Override
-    public double getT0()
+    public double t0()
     {
         return 0;
     }
 
     @Override
-    public double getT1()
+    public double t1()
     {
         return 2 * Math.PI;
     }

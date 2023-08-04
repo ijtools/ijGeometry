@@ -473,7 +473,7 @@ public class LinearRing2D implements Polyline2D, Contour2D
     }
 
     @Override
-    public Point2D getPoint(double t)
+    public Point2D point(double t)
     {
         int nv = vertices.size();
         t = Math.min(Math.max(t, 0), nv);
@@ -500,13 +500,13 @@ public class LinearRing2D implements Polyline2D, Contour2D
     }
 
     @Override
-    public double getT0()
+    public double t0()
     {
         return 0;
     }
 
     @Override
-    public double getT1()
+    public double t1()
     {
         return vertices.size();
     }

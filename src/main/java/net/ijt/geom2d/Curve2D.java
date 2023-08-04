@@ -29,24 +29,43 @@ public interface Curve2D extends CurveShape2D
      */
     public default Polyline2D asPolyline(int nVertices)
     {
-        double t0 = getT0();
-        double t1 = getT1();
+        double t0 = t0();
+        double t1 = t1();
         double dt = (t1 - t0) / (isClosed() ? nVertices : nVertices - 1);
         
         ArrayList<Point2D> vertices = new ArrayList<>(nVertices);
         
         for (int i = 0; i < nVertices; i++)
         {
-            vertices.add(getPoint(t0 + i * dt));
+            vertices.add(point(t0 + i * dt));
         }
         
         return Polyline2D.create(vertices, this.isClosed());
     }
 
-    public abstract Point2D getPoint(double t);
+    /**
+     * Returns the point at the specified position based on the parametric
+     * representation of this curve.
+     * 
+     * @param t
+     *            the parametric position on the curve
+     * @return the point corresponding the the specified position
+     */
+    public abstract Point2D point(double t);
 
-    public abstract double getT0();
-    public abstract double getT1();
+    /**
+     * Returns the lower value of the parameterization range.
+     * 
+     * @return the lower value of the parameterization range.
+     */
+    public abstract double t0();
+    
+    /**
+     * Returns the upper value of the parameterization range.
+     * 
+     * @return the upper value of the parameterization range.
+     */
+    public abstract double t1();
 
     /**
      * @return true if this curve is closed.
