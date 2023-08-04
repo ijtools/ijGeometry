@@ -103,18 +103,6 @@ public class Circle2D implements Contour2D
         return new Ellipse2D(xc, yc, radius, radius, 0);
     }
     
-    /**
-     * Computes the area of this circle, by multiplying the squared radius by
-     * PI.
-     * 
-     * @see net.ijt.geom2d.curve.Ellipse2D#area()
-     * @return the area of this circle.
-     */
-    public double area()
-    {
-        return this.radius * this.radius * Math.PI;
-    }
-    
     public Point2D center()
     {
         return new Point2D(xc, yc);
@@ -128,6 +116,29 @@ public class Circle2D implements Contour2D
         return radius;
     }
     
+    /**
+     * Computes the area of this circle, by multiplying the squared radius by
+     * PI.
+     * 
+     * @see net.ijt.geom2d.curve.Ellipse2D#area()
+     * @return the area of this circle.
+     */
+    public double area()
+    {
+        return this.radius * this.radius * Math.PI;
+    }
+    
+    /**
+     * Computes the perimeter of this circle, by multiplying the radius by 2*PI.
+     * 
+     * @see #area()
+     * @return the perimeter of this circle.
+     */
+    public double perimeter()
+    {
+        return 2 * Math.PI * this.radius;
+    }
+
     
     // ===================================================================
     // Methods implementing the Boundary2D interface
@@ -151,7 +162,7 @@ public class Circle2D implements Contour2D
 
     public boolean isInside(double x, double y)
     {
-    	return hypot(x - this.xc, y - this.yc) < this.radius;
+    	return hypot(x - this.xc, y - this.yc) <= this.radius;
     }
 
     
@@ -196,7 +207,7 @@ public class Circle2D implements Contour2D
     // Methods implementing the Geometry2D interface
     
     /* (non-Javadoc)
-     * @see net.ijt.geom.geom2d.Geometry2D#contains(net.ijt.geom.geom2d.Point2D, double)
+     * @see net.ijt.geom2d.Geometry2D#contains(net.ijt.geom.geom2d.Point2D, double)
      */
     @Override
     public boolean contains(Point2D point, double eps)
