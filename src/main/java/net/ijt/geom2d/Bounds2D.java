@@ -17,6 +17,33 @@ import net.ijt.geom2d.polygon.Polygon2D;
 public class Bounds2D implements Bounds
 {
     // ===================================================================
+    // Static factories
+    
+    public static final Bounds2D of(Iterable<Point2D> points)
+    {
+        // initialize with extreme values
+        double xmin = Double.POSITIVE_INFINITY;
+        double xmax = Double.NEGATIVE_INFINITY;
+        double ymin = Double.POSITIVE_INFINITY;
+        double ymax = Double.NEGATIVE_INFINITY;
+        
+        // compute min/max for each coordinate
+        for (Point2D p : points)
+        {
+            double x = p.x();
+            double y = p.y();
+            xmin = Math.min(xmin, x);
+            xmax = Math.max(xmax, x);
+            ymin = Math.min(ymin, y);
+            ymax = Math.max(ymax, y);
+        }
+        
+        // return new Bounding Bounds
+        return new Bounds2D(xmin, xmax, ymin, ymax);        
+    }
+    
+    
+    // ===================================================================
     // class variables
 
     double xmin;

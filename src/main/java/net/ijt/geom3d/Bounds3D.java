@@ -16,6 +16,38 @@ import net.ijt.geom.Bounds;
 public class Bounds3D implements Bounds
 {
     // ===================================================================
+    // Static factories
+    
+    public static final Bounds3D of(Iterable<Point3D> points)
+    {
+        // initialize with extreme values
+        double xmin = Double.POSITIVE_INFINITY;
+        double xmax = Double.NEGATIVE_INFINITY;
+        double ymin = Double.POSITIVE_INFINITY;
+        double ymax = Double.NEGATIVE_INFINITY;
+        double zmin = Double.POSITIVE_INFINITY;
+        double zmax = Double.NEGATIVE_INFINITY;
+        
+        // compute min/max for each coordinate
+        for (Point3D p : points)
+        {
+            double x = p.x();
+            double y = p.y();
+            double z = p.z();
+            xmin = Math.min(xmin, x);
+            xmax = Math.max(xmax, x);
+            ymin = Math.min(ymin, y);
+            ymax = Math.max(ymax, y);
+            zmin = Math.min(zmin, z);
+            zmax = Math.max(zmax, z);
+        }
+        
+        // return new Bounding Bounds
+        return new Bounds3D(xmin, xmax, ymin, ymax, zmin, zmax);        
+    }
+    
+    
+    // ===================================================================
     // class variables
 
     double xmin;
