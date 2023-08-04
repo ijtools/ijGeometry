@@ -3,7 +3,6 @@
  */
 package net.ijt.geom2d.curve;
 
-import static java.lang.Math.abs;
 import static java.lang.Math.cos;
 import static java.lang.Math.hypot;
 import static java.lang.Math.sin;
@@ -152,7 +151,7 @@ public class Circle2D implements Contour2D
 
     public boolean isInside(double x, double y)
     {
-    	return abs(hypot(x - this.xc, y - this.yc) - this.radius) <= 1;
+    	return hypot(x - this.xc, y - this.yc) < this.radius;
     }
 
     
