@@ -223,9 +223,9 @@ public class DefaultPolygon2D implements Polygon2D
      * No specific test is made for points on the boundary.
      */
     @Override
-    public boolean contains(Point2D point)
+    public boolean isInside(Point2D point)
     {
-        return contains(point.x(), point.y());
+        return isInside(point.x(), point.y());
     }
     
     /**
@@ -241,7 +241,7 @@ public class DefaultPolygon2D implements Polygon2D
      * @see #signedArea()
      * @see #contains(Point2D, double)
      */
-    public boolean contains(double x, double y)
+    public boolean isInside(double x, double y)
     {
         double area = 0;
     
@@ -321,7 +321,7 @@ public class DefaultPolygon2D implements Polygon2D
     @Override
     public boolean contains(Point2D point, double eps)
     {
-        if (this.contains(point.x(), point.y()))
+        if (this.isInside(point.x(), point.y()))
             return true;
         if (this.boundaryContains(point, eps))
             return true;
@@ -358,7 +358,7 @@ public class DefaultPolygon2D implements Polygon2D
     public double distance(double x, double y)
     {
         // if point is inside of the polygon returns 0
-        if (this.contains(x, y))
+        if (this.isInside(x, y))
             return 0;
         
         // computes distance to boundary

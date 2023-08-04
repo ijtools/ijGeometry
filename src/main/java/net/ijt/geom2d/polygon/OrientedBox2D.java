@@ -149,13 +149,13 @@ public class OrientedBox2D implements Polygon2D
     }
 
     @Override
-    public boolean contains(Point2D point)
+    public boolean isInside(Point2D point)
     {
     	return this.boundary.signedDistance(point) <= 0;
     }
 
     @Override
-    public boolean contains(double x, double y)
+    public boolean isInside(double x, double y)
     {
 		return this.boundary.signedDistance(x, y) <= 0;
 	}

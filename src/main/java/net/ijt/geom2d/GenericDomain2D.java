@@ -62,13 +62,13 @@ public class GenericDomain2D implements Domain2D
     // Methods implementing the Geometry2D interface
     
 	@Override
-	public boolean contains(Point2D point)
+	public boolean isInside(Point2D point)
 	{
 		return this.boundary.isInside(point);
 	}
 
 	@Override
-	public boolean contains(double x, double y)
+	public boolean isInside(double x, double y)
 	{
 		return this.boundary.isInside(x, y);
 	}
