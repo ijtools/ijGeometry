@@ -100,21 +100,16 @@ public class CurveSet2D implements CurveShape2D
     public Bounds2D bounds()
     {
         // initialize extreme values
-        double xmin = Double.POSITIVE_INFINITY;
-        double xmax = Double.NEGATIVE_INFINITY;
-        double ymin = Double.POSITIVE_INFINITY;
-        double ymax = Double.NEGATIVE_INFINITY;
+        Bounds2D bounds = new Bounds2D(
+                Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 
+                Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY);
         
         for (Curve2D curve : curves)
         {
-            Bounds2D box = curve.bounds();
-            xmin = Math.min(xmin, box.getXMin());
-            xmax = Math.max(xmax, box.getXMax());
-            ymin = Math.min(ymin, box.getYMin());
-            ymax = Math.max(ymax, box.getYMax());
+            bounds = bounds.union(curve.bounds());
         }
         
-        return new Bounds2D(xmin, xmax, ymin, ymax);
+        return bounds;
     }
 
     @Override

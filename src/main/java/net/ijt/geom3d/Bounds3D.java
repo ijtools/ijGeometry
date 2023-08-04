@@ -85,78 +85,81 @@ public class Bounds3D implements Bounds
         this.zmin = Math.min(z1, z2);
         this.zmax = Math.max(z1, z2);
     }
+
     
+    // ===================================================================
+    // Specific methods
+    
+    public Bounds3D union(Bounds3D bounds)
+    {
+        double xmin = Math.min(this.xmin, bounds.xmin);
+        double xmax = Math.max(this.xmax, bounds.xmax);
+        double ymin = Math.min(this.ymin, bounds.ymin);
+        double ymax = Math.max(this.ymax, bounds.ymax);
+        double zmin = Math.min(this.zmin, bounds.zmin);
+        double zmax = Math.max(this.zmax, bounds.zmax);
+        return new Bounds3D(xmin, xmax, ymin, ymax, zmin, zmax);
+    }
+
 
     // ===================================================================
     // Accessors to Bounds2D fields
     
-    public double getXMin()
+    public double minX()
     {
         return xmin;
     }
     
-    public double getXMax()
+    public double maxX()
     {
         return xmax;
     }
     
-    public double getYMin()
+    public double minY()
     {
         return ymin;
     }
     
-    public double getYMax()
+    public double maxY()
     {
         return ymax;
     }
     
-    public double getZMin()
+    public double minZ()
     {
         return zmin;
     }
     
-    public double getZMax()
+    public double maxZ()
     {
         return zmax;
     }
     
-    public double getSizeX()
+    public double sizeX()
     {
         return xmax - xmin;
     }
     
-    public double getSizeY()
+    public double sizeY()
     {
         return ymax - ymin;
     }
     
-    public double getSizeZ()
+    public double sizeZ()
     {
         return zmax - zmin;
     }
     
-    /** 
-     * Returns true if all bounds are finite. 
-     *
-     * @return true is the box is bounded
-     */
-    public boolean isBounded()
+    public double size(int d)
     {
-        if (isInfinite(xmin))
-            return false;
-        if (isInfinite(ymin))
-            return false;
-        if (isInfinite(zmin))
-            return false;
-        if (isInfinite(xmax))
-            return false;
-        if (isInfinite(ymax))
-            return false;
-        if (isInfinite(zmax))
-            return false;
-        return true;
+        switch(d)
+        {
+        case 0: return this.xmax - this.xmin;
+        case 1: return this.ymax - this.ymin;
+        case 2: return this.zmax - this.zmin;
+        default: throw new IllegalArgumentException("Dimension index must be between 0 and 2, not " + d);
+        }
     }
-    
 
     // ===================================================================
     // generic accessors
@@ -187,17 +190,6 @@ public class Bounds3D implements Bounds
     // ===================================================================
     // tests of inclusion
     
-    public double getSize(int d)
-    {
-        switch(d)
-        {
-        case 0: return this.xmax - this.xmin;
-        case 1: return this.ymax - this.ymin;
-        case 2: return this.zmax - this.zmin;
-        default: throw new IllegalArgumentException("Dimension index must be between 0 and 2, not " + d);
-        }
-    }
-
     /**
      * Checks if this box contains the given point.
      * 
@@ -222,6 +214,32 @@ public class Bounds3D implements Bounds
         if (y > ymax)
             return false;
         if (z > zmax)
+            return false;
+        return true;
+    }
+    
+
+    // ===================================================================
+    // Methods mimicking the Geometry3D interface
+    
+    /** 
+     * Returns true if all bounds are finite. 
+     *
+     * @return true is the box is bounded
+     */
+    public boolean isBounded()
+    {
+        if (isInfinite(xmin))
+            return false;
+        if (isInfinite(ymin))
+            return false;
+        if (isInfinite(zmin))
+            return false;
+        if (isInfinite(xmax))
+            return false;
+        if (isInfinite(ymax))
+            return false;
+        if (isInfinite(zmax))
             return false;
         return true;
     }

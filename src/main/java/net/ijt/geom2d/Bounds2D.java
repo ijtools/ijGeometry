@@ -80,9 +80,9 @@ public class Bounds2D implements Bounds
     // General methods
     
     /**
-	 * Converts this bounding box to a rectangular polyon.
+	 * Converts this bounding box to a rectangular polygon.
 	 * 
-	 * @return the polygon corresponding to this bounding box
+	 * @return the polygon corresponding to this bounds
 	 */
     public Polygon2D getRectangle()
     {
@@ -92,6 +92,15 @@ public class Bounds2D implements Bounds
     	Point2D p4 = new Point2D(this.xmin, this.ymax);
     	Polygon2D poly = Polygon2D.create(p1, p2, p3, p4);
     	return poly;
+    }
+    
+    public Bounds2D union(Bounds2D bounds)
+    {
+        double xmin = Math.min(this.xmin, bounds.xmin);
+        double xmax = Math.max(this.xmax, bounds.xmax);
+        double ymin = Math.min(this.ymin, bounds.ymin);
+        double ymax = Math.max(this.ymax, bounds.ymax);
+        return new Bounds2D(xmin, xmax, ymin, ymax);
     }
 
     
@@ -144,54 +153,49 @@ public class Bounds2D implements Bounds
     // ===================================================================
     // Accessors to Bounds2D fields
     
-    public double getXMin()
+    public double minX()
     {
         return xmin;
     }
     
-    public double getXMax()
+    public double maxX()
     {
         return xmax;
     }
     
-    public double getYMin()
+    public double minY()
     {
         return ymin;
     }
     
-    public double getYMax()
+    public double maxY()
     {
         return ymax;
     }
     
-    public double getSizeX()
+    public double sizeX()
     {
         return xmax - xmin;
     }
     
-    public double getSizeY()
+    public double sizeY()
     {
         return ymax - ymin;
     }
     
-    /** @return true if all bounds are finite. */
-    public boolean isBounded()
-    {
-        if (isInfinite(xmin))
-            return false;
-        if (isInfinite(ymin))
-            return false;
-        if (isInfinite(xmax))
-            return false;
-        if (isInfinite(ymax))
-            return false;
-        return true;
-    }
-    
-
     // ===================================================================
     // generic accessors
     
+    public double size(int d)
+    {
+        switch(d)
+        {
+        case 0: return this.xmax - this.xmin;
+        case 1: return this.ymax - this.ymin;
+        default: throw new IllegalArgumentException("Dimension index must be either 0 or 1, not " + d);
+        }
+    }
+
     public double getMin(int d)
     {
         switch(d)
@@ -212,15 +216,34 @@ public class Bounds2D implements Bounds
         }
     }
     
-    public double getSize(int d)
+    
+    
+    
+    // ===================================================================
+    // Methods mimicking the Geometry2D interface
+    
+    /** @return true if all bounds are finite. */
+    public boolean isBounded()
     {
-        switch(d)
-        {
-        case 0: return this.xmax - this.xmin;
-        case 1: return this.ymax - this.ymin;
-        default: throw new IllegalArgumentException("Dimension index must be either 0 or 1, not " + d);
-        }
+        if (isInfinite(xmin))
+            return false;
+        if (isInfinite(ymin))
+            return false;
+        if (isInfinite(xmax))
+            return false;
+        if (isInfinite(ymax))
+            return false;
+        return true;
     }
+
+    @Override
+    public int dimensionality()
+    {
+        return 2;
+    }
+
+    // ===================================================================
+    // Methods mimicking the Geometry2D interface
     
     public boolean almostEquals(Bounds2D box, double eps)
     {
@@ -229,11 +252,5 @@ public class Bounds2D implements Bounds
         if (Math.abs(box.ymin - ymin) > eps) return false;
         if (Math.abs(box.ymax - ymax) > eps) return false;
         return true;
-    }
-
-    @Override
-    public int dimensionality()
-    {
-        return 2;
     }
 }
