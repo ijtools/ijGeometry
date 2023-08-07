@@ -56,6 +56,10 @@ public class OrientedBox2D implements Polygon2D
     	computeBoundary();
     }
     
+    /**
+     * Pre-computes the boundary of the box, used to compute vertex coordinates,
+     * bounds, distances...
+     */
     private void computeBoundary()
     {
     	// create the "local to global" affine transform
@@ -93,19 +97,7 @@ public class OrientedBox2D implements Polygon2D
     @Override
     public Iterable<Point2D> vertexPositions()
     {
-    	// create the "local to global" affine transform
-    	AffineTransform2D rot = AffineTransform2D.createRotation(Math.toRadians(this.theta));
-    	AffineTransform2D tra = AffineTransform2D.createTranslation(xc, yc);
-    	AffineTransform2D transfo = tra.concatenate(rot);
-    	
-    	// create vertex array
-    	ArrayList<Point2D> vertices = new ArrayList<>(4);
-    	vertices.add(new Point2D(-size1/2, -size2/2).transform(transfo));
-    	vertices.add(new Point2D( size1/2, -size2/2).transform(transfo));
-    	vertices.add(new Point2D( size1/2,  size2/2).transform(transfo));
-    	vertices.add(new Point2D(-size1/2,  size2/2).transform(transfo));
-    	
-        // return vertices
+        // return pre-computed boundary vertices
         return this.boundary.vertexPositions();
     }
 
