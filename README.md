@@ -28,4 +28,5 @@ The base configuration has few dependencies:
 
 * ImageJ
 * JUnit
+* JAMA (Java Matrix libray)
 
