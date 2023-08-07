@@ -383,7 +383,7 @@ public class Ellipsoid3D implements Geometry3D
     private AffineTransform3D localToGlobalTransform()
     {
         AffineTransform3D sca = AffineTransform3D.createScaling(r1, r2, r3);
-        AffineTransform3D rot = AffineTransform3D.fromMatrix(orientation().affineMatrix());
+        AffineTransform3D rot = orientation().asTransform();
         AffineTransform3D tra = AffineTransform3D.createTranslation(center);
         return tra.concatenate(rot).concatenate(sca);
     }

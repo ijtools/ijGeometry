@@ -238,6 +238,11 @@ public class Rotation3D
     // ===================================================================
     // Utility methods
     
+    public AffineTransform3D asTransform()
+    {
+        return AffineTransform3D.fromMatrix(affineMatrix());
+    }
+    
     /**
      * Converts this Rotation3D into a 4-by-4 rotation matrix.
      * 
