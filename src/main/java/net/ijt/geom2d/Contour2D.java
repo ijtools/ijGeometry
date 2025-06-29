@@ -27,5 +27,8 @@ public interface Contour2D extends Curve2D, Boundary2D
         ArrayList<Contour2D> res = new ArrayList<Contour2D>(1);
         res.add(this);
         return res;
-    }    
+    }
+    
+    @Override
+    public Contour2D transform(AffineTransform2D trans);
 }

@@ -81,4 +81,7 @@ public interface Boundary2D extends CurveShape2D
     
     @Override
     public Collection<? extends Contour2D> curves();
+    
+    @Override
+    public Boundary2D transform(AffineTransform2D trans);
 }
