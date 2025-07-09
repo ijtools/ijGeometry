@@ -8,12 +8,12 @@ to facilitate the management of 2D/3D geometric shapes within ImageJ plugins.
 
 The aim is to gather all ImageJ-related geometry questions into a single library, 
 that can be used for the development of more specialized / finalized plugins.
-Typcial examples include but are not limited to:
+Typical examples include but are not limited to:
 
 * extraction of geometric primitives (ellipses, polygons, 3D meshes...) from 2D/3D digital images
-* facilitate geometric operation on ROI (regions of intersets)
-* generating synthetic shapes for testing or validating image analysis algorithms and methods
-* register images of shapes by computing the most suited geometric deformation
+* simplification of geometric operation on ROI (regions of intersets)
+* generation of synthetic shapes for testing or validating image analysis algorithms and methods
+* registration of images of shapes by computing the most suited geometric deformation
 * ...
 
 In its current state, the library contains several classes for representation of common (geometry)
