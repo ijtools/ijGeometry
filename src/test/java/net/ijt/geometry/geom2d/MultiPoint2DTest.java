@@ -1,17 +1,15 @@
 /**
  * 
  */
-package net.ijt.geom2d;
+package net.ijt.geometry.geom2d;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
-
-import net.ijt.geometry.geom2d.Bounds2D;
-import net.ijt.geometry.geom2d.MultiPoint2D;
-import net.ijt.geometry.geom2d.Point2D;
 
 /**
  * 

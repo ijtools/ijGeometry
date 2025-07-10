@@ -1,7 +1,7 @@
 /**
  * 
  */
-package net.ijt.geom2d.curve;
+package net.ijt.geometry.geom2d.curve;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -12,8 +12,6 @@ import org.junit.Test;
 import net.ijt.geometry.geom2d.Boundary2D;
 import net.ijt.geometry.geom2d.Bounds2D;
 import net.ijt.geometry.geom2d.Point2D;
-import net.ijt.geometry.geom2d.curve.Circle2D;
-import net.ijt.geometry.geom2d.curve.MultiContourBoundary2D;
 
 /**
  * 

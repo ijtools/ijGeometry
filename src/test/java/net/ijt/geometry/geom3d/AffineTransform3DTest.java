@@ -1,13 +1,11 @@
 /**
  * 
  */
-package net.ijt.geom3d;
+package net.ijt.geometry.geom3d;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
-import net.ijt.geometry.geom3d.AffineTransform3D;
 
 /**
  * @author dlegland

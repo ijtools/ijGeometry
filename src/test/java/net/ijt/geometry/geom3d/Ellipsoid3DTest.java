@@ -1,16 +1,12 @@
 /**
  * 
  */
-package net.ijt.geom3d.surface;
+package net.ijt.geometry.geom3d;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-
-import net.ijt.geometry.geom3d.Bounds3D;
-import net.ijt.geometry.geom3d.Ellipsoid3D;
-import net.ijt.geometry.geom3d.Point3D;
-import net.ijt.geometry.geom3d.surface.net;
 
 /**
  * @author dlegland
