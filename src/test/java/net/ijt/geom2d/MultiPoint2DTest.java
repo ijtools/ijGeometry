@@ -9,6 +9,10 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import net.ijt.geometry.geom2d.Bounds2D;
+import net.ijt.geometry.geom2d.MultiPoint2D;
+import net.ijt.geometry.geom2d.Point2D;
+
 /**
  * 
  */
@@ -16,7 +20,7 @@ public class MultiPoint2DTest
 {
 
     /**
-     * Test method for {@link net.ijt.geom2d.MultiPoint2D#contains(net.ijt.geom2d.Point2D, double)}.
+     * Test method for {@link net.ijt.geometry.geom2d.MultiPoint2D#contains(net.ijt.geometry.geom2d.Point2D, double)}.
      */
     @Test
     public final void testContains()
@@ -31,7 +35,7 @@ public class MultiPoint2DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom2d.MultiPoint2D#distance(double, double)}.
+     * Test method for {@link net.ijt.geometry.geom2d.MultiPoint2D#distance(double, double)}.
      */
     @Test
     public final void testDistance()
@@ -47,7 +51,7 @@ public class MultiPoint2DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom2d.MultiPoint2D#bounds()}.
+     * Test method for {@link net.ijt.geometry.geom2d.MultiPoint2D#bounds()}.
      */
     @Test
     public final void testBounds()

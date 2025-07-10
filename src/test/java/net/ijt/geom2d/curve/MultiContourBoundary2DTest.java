@@ -9,9 +9,11 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import net.ijt.geom2d.Boundary2D;
-import net.ijt.geom2d.Bounds2D;
-import net.ijt.geom2d.Point2D;
+import net.ijt.geometry.geom2d.Boundary2D;
+import net.ijt.geometry.geom2d.Bounds2D;
+import net.ijt.geometry.geom2d.Point2D;
+import net.ijt.geometry.geom2d.curve.Circle2D;
+import net.ijt.geometry.geom2d.curve.MultiContourBoundary2D;
 
 /**
  * 
@@ -19,7 +21,7 @@ import net.ijt.geom2d.Point2D;
 public class MultiContourBoundary2DTest
 {
     /**
-     * Test method for {@link net.ijt.geom2d.curve.MultiContourBoundary2D#isInside(net.ijt.geom2d.Point2D)}.
+     * Test method for {@link net.ijt.geometry.geom2d.curve.MultiContourBoundary2D#isInside(net.ijt.geometry.geom2d.Point2D)}.
      */
     @Test
     public final void testIsInsidePoint2D()
@@ -35,7 +37,7 @@ public class MultiContourBoundary2DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom2d.curve.MultiContourBoundary2D#contains(net.ijt.geom2d.Point2D, double)}.
+     * Test method for {@link net.ijt.geometry.geom2d.curve.MultiContourBoundary2D#contains(net.ijt.geometry.geom2d.Point2D, double)}.
      */
     @Test
     public final void testContains()
@@ -59,7 +61,7 @@ public class MultiContourBoundary2DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom2d.curve.MultiContourBoundary2D#bounds()}.
+     * Test method for {@link net.ijt.geometry.geom2d.curve.MultiContourBoundary2D#bounds()}.
      */
     @Test
     public final void testBounds()

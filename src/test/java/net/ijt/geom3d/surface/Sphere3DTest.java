@@ -7,9 +7,10 @@ import java.util.Collection;
 import org.junit.Assert;
 import org.junit.Test;
 
-import net.ijt.geom3d.Point3D;
-import net.ijt.geom3d.StraightLine3D;
-import net.ijt.geom3d.Vector3D;
+import net.ijt.geometry.geom3d.Point3D;
+import net.ijt.geometry.geom3d.Sphere3D;
+import net.ijt.geometry.geom3d.StraightLine3D;
+import net.ijt.geometry.geom3d.Vector3D;
 
 
 public class Sphere3DTest

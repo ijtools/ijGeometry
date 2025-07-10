@@ -7,6 +7,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import net.ijt.geometry.geom2d.curve.Circle2D;
+
 /**
  * 
  */
@@ -14,7 +16,7 @@ public class Circle2DTest
 {
 
     /**
-     * Test method for {@link net.ijt.geom2d.curve.Circle2D#area()}.
+     * Test method for {@link net.ijt.geometry.geom2d.curve.Circle2D#area()}.
      */
     @Test
     public final void test_area()
@@ -28,7 +30,7 @@ public class Circle2DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom2d.curve.Circle2D#area()}.
+     * Test method for {@link net.ijt.geometry.geom2d.curve.Circle2D#area()}.
      */
     @Test
     public final void test_perimeter()
@@ -42,7 +44,7 @@ public class Circle2DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom2d.curve.Circle2D#radius()}.
+     * Test method for {@link net.ijt.geometry.geom2d.curve.Circle2D#radius()}.
      */
     @Test
     public final void test_radius()
@@ -55,7 +57,7 @@ public class Circle2DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom2d.curve.Circle2D#distance(double, double)}.
+     * Test method for {@link net.ijt.geometry.geom2d.curve.Circle2D#distance(double, double)}.
      */
     @Test
     public final void testD_distance_onCircle()
@@ -75,7 +77,7 @@ public class Circle2DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom2d.curve.Circle2D#distance(double, double)}.
+     * Test method for {@link net.ijt.geometry.geom2d.curve.Circle2D#distance(double, double)}.
      */
     @Test
     public final void test_distance_outside()
@@ -95,7 +97,7 @@ public class Circle2DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom2d.curve.Circle2D#distance(double, double)}.
+     * Test method for {@link net.ijt.geometry.geom2d.curve.Circle2D#distance(double, double)}.
      */
     @Test
     public final void test_distance_inside()
@@ -115,7 +117,7 @@ public class Circle2DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom2d.curve.Circle2D#distance(double, double)}.
+     * Test method for {@link net.ijt.geometry.geom2d.curve.Circle2D#distance(double, double)}.
      */
     @Test
     public final void test_isInside_inside()
@@ -130,7 +132,7 @@ public class Circle2DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom2d.curve.Circle2D#distance(double, double)}.
+     * Test method for {@link net.ijt.geometry.geom2d.curve.Circle2D#distance(double, double)}.
      */
     @Test
     public final void test_isInside_outside()

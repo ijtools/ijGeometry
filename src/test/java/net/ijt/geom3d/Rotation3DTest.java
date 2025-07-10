@@ -7,6 +7,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import net.ijt.geometry.geom3d.AffineTransform3D;
+import net.ijt.geometry.geom3d.MatrixAffineTransform3D;
+import net.ijt.geometry.geom3d.Rotation3D;
+import net.ijt.geometry.geom3d.Vector3D;
+import net.ijt.geometry.geom3d.net;
+
 /**
  * @author dlegland
  *

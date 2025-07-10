@@ -7,6 +7,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import net.ijt.geometry.geom3d.AffineTransform3D;
+
 /**
  * @author dlegland
  *
@@ -15,7 +17,7 @@ public class AffineTransform3DTest
 {
 
     /**
-     * Test method for {@link net.ijt.geom3d.AffineTransform3D#createTranslation(double, double, double)}.
+     * Test method for {@link net.ijt.geometry.geom3d.AffineTransform3D#createTranslation(double, double, double)}.
      */
     @Test
     public final void testCreateTranslationDoubleDoubleDouble()
@@ -37,7 +39,7 @@ public class AffineTransform3DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom3d.AffineTransform3D#createScaling(double, double, double)}.
+     * Test method for {@link net.ijt.geometry.geom3d.AffineTransform3D#createScaling(double, double, double)}.
      */
     @Test
     public final void testCreateScalingDoubleDoubleDouble()
@@ -59,7 +61,7 @@ public class AffineTransform3DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom3d.AffineTransform3D#createRotationOx(double)}.
+     * Test method for {@link net.ijt.geometry.geom3d.AffineTransform3D#createRotationOx(double)}.
      */
     @Test
     public final void testCreateRotationOx_30degrees()
@@ -80,7 +82,7 @@ public class AffineTransform3DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom3d.AffineTransform3D#createRotationOy(double)}.
+     * Test method for {@link net.ijt.geometry.geom3d.AffineTransform3D#createRotationOy(double)}.
      */
     @Test
     public final void testCreateRotationOy_30degrees()
@@ -101,7 +103,7 @@ public class AffineTransform3DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom3d.AffineTransform3D#createRotationOz(double)}.
+     * Test method for {@link net.ijt.geometry.geom3d.AffineTransform3D#createRotationOz(double)}.
      */
     @Test
     public final void testCreateRotationOz_30degrees()
@@ -122,7 +124,7 @@ public class AffineTransform3DTest
     }
 
     /**
-     * Test method for {@link net.ijt.geom3d.AffineTransform3D#concatenate(net.ijt.geom3d.AffineTransform3D)}.
+     * Test method for {@link net.ijt.geometry.geom3d.AffineTransform3D#concatenate(net.ijt.geometry.geom3d.AffineTransform3D)}.
      */
     @Test
     public final void testConcatenate()

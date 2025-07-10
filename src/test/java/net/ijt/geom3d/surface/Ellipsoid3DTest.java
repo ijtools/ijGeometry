@@ -7,8 +7,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import net.ijt.geom3d.Bounds3D;
-import net.ijt.geom3d.Point3D;
+import net.ijt.geometry.geom3d.Bounds3D;
+import net.ijt.geometry.geom3d.Ellipsoid3D;
+import net.ijt.geometry.geom3d.Point3D;
+import net.ijt.geometry.geom3d.surface.net;
 
 /**
  * @author dlegland
@@ -18,7 +20,7 @@ public class Ellipsoid3DTest
 {
 
     /**
-     * Test method for {@link net.sci.geom.geom3d.surface.Ellipsoid3D#distance(double, double, double)}.
+     * Test method for {@link net.ijt.geometry.geom3d.sci.geom.geom3d.surface.Ellipsoid3D#distance(double, double, double)}.
      */
     @Test
     public final void testDistance()
@@ -41,7 +43,7 @@ public class Ellipsoid3DTest
     }
 
     /**
-     * Test method for {@link net.sci.geom.geom3d.surface.Ellipsoid3D#contains(net.sci.geom.geom3d.Point3D, double)}.
+     * Test method for {@link net.ijt.geometry.geom3d.sci.geom.geom3d.surface.Ellipsoid3D#contains(net.sci.geom.geom3d.Point3D, double)}.
      */
     @Test
     public final void testContains()
@@ -64,7 +66,7 @@ public class Ellipsoid3DTest
     }
 
     /**
-     * Test method for {@link net.sci.geom.geom3d.surface.Ellipsoid3D#bounds()}.
+     * Test method for {@link net.ijt.geometry.geom3d.sci.geom.geom3d.surface.Ellipsoid3D#bounds()}.
      */
     @Test
     public final void testBounds()
